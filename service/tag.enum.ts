@@ -1,5 +1,5 @@
-export enum Tag  {
-    VERSIONS = "versions",
-    CATEGORIES = "categories",
-    PRODUCTS = "products"
+export enum Tag {
+  VERSIONS = "versions",
+  CATEGORIES = "categories",
+  PRODUCTS = "products",
 }

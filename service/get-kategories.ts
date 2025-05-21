@@ -23,14 +23,14 @@ export async function getCategories(version?: string) {
         revalidate: 60,
         tags: [Tag.CATEGORIES],
       },
-    }
+    },
   );
   const data = await response.json();
   return data as CategoryItem[];
 }
 
 export async function getCategoriesWithEmoji(
-  version?: string
+  version?: string,
 ): Promise<CategoryWithEmoji[]> {
   const categories = await getCategories(version);
   return categories.map(withEmoji);
@@ -54,7 +54,7 @@ function withEmoji(category: CategoryItem): CategoryWithEmoji {
 
     "Beyaz Et": "🐔",
     "Beyaz Et (Tavuk ve Hindi)": "🐔",
-    
+
     "Bisküvi, Çikolata, Kek, Cips ve Şekerleme": "🍪",
     "Bitkisel Yağ": "🫒",
     "Catering ve Restorant": "🍽️",
@@ -71,7 +71,7 @@ function withEmoji(category: CategoryItem): CategoryWithEmoji {
     Makarna: "🍝",
 
     "Meşrubatlar (Madensuyu, Şıralar, Şerbetler vb.)": "🥤",
-    
+
     "Meyve Suyu, Konsantre ve Püreleri": "🧃",
 
     "Mısır Cips": "🌽🍿",
@@ -80,9 +80,9 @@ function withEmoji(category: CategoryItem): CategoryWithEmoji {
     "Nişasta, Glikoz Şurupları ve Doğal Tatlandırıcılar": "🍯",
     Oyuncak: "🧸",
     "Özel Gıdalar": "🍱",
-    
+
     "Peynir Mayaları ve Starter Kültürler": "🧫🧀",
-    
+
     "Salça, Konserve, Turşu, Soslar": "🥫",
     "Siyah Çay, Kahve": "☕",
     "Siyah Çay, Kahve vb.": "☕",

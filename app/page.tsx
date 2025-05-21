@@ -16,17 +16,17 @@ export default function Home() {
   }, [search]);
   console.log(data);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
       <input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search"
-        className="w-full p-2 border border-gray-300 rounded-md"
+        className="w-full rounded-md border border-gray-300 p-2"
       />
-      <div className="grid grid-cols-3 gap-4  ">
+      <div className="grid grid-cols-3 gap-4">
         {data.map((item) => (
-          <div className="bg-gray-800 p-4 rounded-md" key={item.document.id}>
+          <div className="rounded-md bg-gray-800 p-4" key={item.document.id}>
             {highlight(item, "MarkaAdi")}
             {highlight(item, "FirmaAdi")}
             {/* <div className="text-white">{item.document.marka}</div>
@@ -38,7 +38,7 @@ export default function Home() {
                 alt={item.document.MarkaAdi || ""}
                 width={100}
                 height={100}
-                className="flex justify-center items-center object-contain size-32"
+                className="flex size-32 items-center justify-center object-contain"
                 priority={false}
               />
             )}
@@ -48,7 +48,6 @@ export default function Home() {
     </div>
   );
 }
-
 
 function highlight(item: any, fieldName: string) {
   const value = item.highlight[fieldName];

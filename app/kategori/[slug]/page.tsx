@@ -11,12 +11,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
   //   console.log(products);
   return (
     <div className="container mx-auto py-4">
-      <div className="bg-gray-100 rounded-md p-4 mb-8">
+      <div className="mb-8 rounded-md bg-gray-100 p-4">
         <h1>{slug}</h1>
       </div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-4">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
         {products.map((product) => (
-          <div className="bg-gray-100 rounded-md p-4" key={product.id}>
+          <div className="rounded-md bg-gray-100 p-4" key={product.id}>
             <div>{product.MarkaAdi}</div>
             <div>{product.FirmaAdi}</div>
             {/* <div>{product.Rozet}</div> */}
@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 alt={product.MarkaAdi || ""}
                 width={100}
                 height={100}
-                className="flex justify-center items-center object-contain size-32"
+                className="flex size-32 items-center justify-center object-contain"
                 priority={false}
               />
             )}
