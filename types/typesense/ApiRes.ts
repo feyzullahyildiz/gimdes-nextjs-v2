@@ -1,44 +1,45 @@
 export type TypesenseApiResponse = Array<TypesenseApiResponseItem>;
 
+export type ISertifikaItem = {
+  BarkodluUrunSayisi: number;
+  Durum: string;
+  FirmaAdi: string;
+  FirmaAdresi: string;
+  FirmaId: number;
+  FirmaIl: string;
+  FirmaIletisimEmail: string;
+  FirmaTelefon: string;
+  FirmaUlke: string;
+  FirmaWebSayfasi?: string;
+  GuncellemeTarihi: string;
+  HanbeliOk: boolean;
+  HanefiOk: boolean;
+  IlkSertifikaAlimTarihi: string;
+  KapsamDisi?: string;
+  KapsamOnizleme: string;
+  KategoriAdi: string;
+  KategoriId: number;
+  MalikiOk: boolean;
+  MarkaAdi: string;
+  MarkaLogosu: string;
+  Rozet: string;
+  SafiOk: boolean;
+  SertifikaBitisTarihi: string;
+  SertifikaId: number;
+  SertifikaKapsami: string;
+  SertifikaNo: string;
+  SertifikaResimleri: Array<{
+    Filename: string;
+    OriginalName: string;
+  }>;
+  Tarihce: string;
+  YildizSayisi: number;
+  id: string;
+  unstable_SertifikaKapsami: Array<string>;
+  unstable_Tarihce: Array<string>;
+};
 export type TypesenseApiResponseItem = {
-  document: {
-    BarkodluUrunSayisi: number;
-    Durum: string;
-    FirmaAdi: string;
-    FirmaAdresi: string;
-    FirmaId: number;
-    FirmaIl: string;
-    FirmaIletisimEmail: string;
-    FirmaTelefon: string;
-    FirmaUlke: string;
-    FirmaWebSayfasi?: string;
-    GuncellemeTarihi: string;
-    HanbeliOk: boolean;
-    HanefiOk: boolean;
-    IlkSertifikaAlimTarihi: string;
-    KapsamDisi?: string;
-    KapsamOnizleme: string;
-    KategoriAdi: string;
-    KategoriId: number;
-    MalikiOk: boolean;
-    MarkaAdi: string;
-    MarkaLogosu: string;
-    Rozet: string;
-    SafiOk: boolean;
-    SertifikaBitisTarihi: string;
-    SertifikaId: number;
-    SertifikaKapsami: string;
-    SertifikaNo: string;
-    SertifikaResimleri: Array<{
-      Filename: string;
-      OriginalName: string;
-    }>;
-    Tarihce: string;
-    YildizSayisi: number;
-    id: string;
-    unstable_SertifikaKapsami: Array<string>;
-    unstable_Tarihce: Array<string>;
-  };
+  document: ISertifikaItem;
   highlight: {
     [key in SertifikaItemFieldName]: {
       matched_tokens: Array<string>;
@@ -64,8 +65,8 @@ export type TypesenseApiResponseItem = {
 
 export type SertifikaItemFieldName = keyof Omit<
   TypesenseApiResponseItem["document"],
-  "BarkodluUrunSayisi" |
-  "SertifikaResimleri" |
-  "unstable_SertifikaKapsami" |
-  "unstable_Tarihce"
+  | "BarkodluUrunSayisi"
+  | "SertifikaResimleri"
+  | "unstable_SertifikaKapsami"
+  | "unstable_Tarihce"
 >;

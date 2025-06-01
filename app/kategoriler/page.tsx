@@ -4,6 +4,7 @@ import React from "react";
 import { cn } from "@/util/cn";
 import Link from "next/link";
 
+
 export default async function Page() {
   const activeVersion = await getActiveVersion();
   const categories = await getCachedCategoriesWithEmoji(activeVersion);

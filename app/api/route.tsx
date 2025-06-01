@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 // export const revalidate = 60;
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const query = searchParams.get("q") || "peynir";
+  const query = searchParams.get("q") || "";
 
   const result = await typeSenseClient
     // .collections("items")
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
       query_by: ["FirmaAdi", "MarkaAdi"],
       // query_by_weights: [2, 2, 1],
       //   sort_by: "_text_match:desc",
-      per_page: 10,
+      per_page: 30,
       //   prefix: ["marka", "ad"],
       //   prefix: "ad",
       //   prefix: ["ad", "marka", "kat_adi", "sert_kap", "kap_oniz"].join(","),
