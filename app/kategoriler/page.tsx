@@ -7,7 +7,6 @@ import Link from "next/link";
 export default async function Page() {
   const activeVersion = await getActiveVersion();
   const categories = await getCachedCategoriesWithEmoji(activeVersion);
-  // console.log("categories", categories);
   return (
     <div className="container mx-auto py-4">
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
@@ -18,6 +17,7 @@ export default async function Page() {
             className={cn(
               "group flex flex-col justify-between gap-8 rounded-md bg-gray-100",
               "overflow-hidden",
+              "shadow-sm",
             )}
           >
             <span className="p-4 text-center text-6xl">{category.emoji}</span>
@@ -30,3 +30,4 @@ export default async function Page() {
     </div>
   );
 }
+export const revalidate = 60;

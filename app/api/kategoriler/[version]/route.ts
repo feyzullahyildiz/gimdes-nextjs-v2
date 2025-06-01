@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { version: string } },
+  { params }: { params: Promise<{ version: string }> },
 ) => {
-  const version = params.version;
+  const { version } = await params;
   const categories = await getCategoriesWithEmoji(version);
   return NextResponse.json(categories);
 };

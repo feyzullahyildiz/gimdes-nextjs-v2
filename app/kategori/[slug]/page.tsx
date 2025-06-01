@@ -4,14 +4,14 @@ import { imgUrl } from "@/util/img-url";
 import React from "react";
 import Image from "next/image";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const activeVersion = await getActiveVersion();
   const products = await getProductsByCategory(slug, activeVersion);
   //   console.log(products);
   return (
     <div className="container mx-auto py-4">
-      <div className="mb-8 rounded-md bg-gray-100 p-4">
+      <div className="mb-8 rounded-md p-4">
         <h1>{slug}</h1>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">

@@ -16,6 +16,7 @@ export interface CategoryWithEmoji extends CategoryItem {
 
 export async function getCategories(version?: string) {
   const activeVersion = version || (await getActiveVersion());
+  console.log("getCategories START", activeVersion);
   const response = await fetch(
     `${process.env.JSON_SERVER_API}/api/${activeVersion}/kategoriler/`,
     {
@@ -23,6 +24,7 @@ export async function getCategories(version?: string) {
         revalidate: 60,
         tags: [Tag.CATEGORIES],
       },
+      // cache: "force-cache",
     },
   );
   const data = await response.json();
@@ -32,12 +34,15 @@ export async function getCategories(version?: string) {
 export async function getCategoriesWithEmoji(
   version?: string,
 ): Promise<CategoryWithEmoji[]> {
+  console.log("getCategoriesWithEmoji START");
   const categories = await getCategories(version);
-  return categories.map(withEmoji);
+  const res = categories.map(withEmoji);
+  console.log("getCategoriesWithEmoji DONE");
+  return res;
 }
 
 export const getCachedCategoriesWithEmoji = cache(getCategoriesWithEmoji, [], {
-  revalidate: 1,
+  revalidate: 60,
   tags: [Tag.CATEGORIES],
 });
 function withEmoji(category: CategoryItem): CategoryWithEmoji {
@@ -81,13 +86,13 @@ function withEmoji(category: CategoryItem): CategoryWithEmoji {
     Oyuncak: "🧸",
     "Özel Gıdalar": "🍱",
 
-    "Peynir Mayaları ve Starter Kültürler": "🧫🧀",
+    "Peynir Mayaları ve Starter Kültürler": "🧫",
 
     "Salça, Konserve, Turşu, Soslar": "🥫",
     "Siyah Çay, Kahve": "☕",
     "Siyah Çay, Kahve vb.": "☕",
     Su: "💧",
-    "Süt ve Süt Ürünleri": "🥛",
+    "Süt ve Süt Ürünleri": "🥛🧀",
     "TAKVİYE EDİCİ GIDALAR": "💊",
     "Temizlik Maddeleri": "🧹",
     Tuz: "🧂",

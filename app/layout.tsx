@@ -3,7 +3,7 @@ import "./globals.css";
 import { getVersions } from "@/service/get-versions";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { cookies } from "next/headers";
+import { getActiveVersion } from "@/service/get-active-version";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,15 +16,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const versions = await getVersions();
-  const cookieStore = await cookies();
-  const activeVersion =
-    cookieStore.get("version")?.value || versions[versions.length - 1];
-  // const activeVersion = cookieStore.get("version")?.value || versions[0];
+  const activeVersion = await getActiveVersion();
   return (
     <html lang="tr">
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen min-w-96 flex-col">
         <Header versions={versions} activeVersion={activeVersion} />
-        <div className="flex-1 bg-red-300">{children}</div>
+        <div className="flex-1">{children}</div>
         <Footer />
       </body>
     </html>

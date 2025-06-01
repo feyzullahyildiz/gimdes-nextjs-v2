@@ -1,11 +1,17 @@
 "use client";
+import {
+  SertifikaItemFieldName,
+  TypesenseApiResponse,
+  TypesenseApiResponseItem,
+} from "@/types/typesense/ApiRes";
+import { cn } from "@/util/cn";
 import { imgUrl } from "@/util/img-url";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [search, setSearch] = useState("");
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<TypesenseApiResponse>([]);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`/api?q=${search}`);
@@ -16,15 +22,15 @@ export default function Home() {
   }, [search]);
   console.log(data);
   return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
+    <div className={cn("container mx-auto", "flex flex-col gap-4 pt-4")}>
       <input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search"
-        className="w-full rounded-md border border-gray-300 p-2"
+        placeholder="Arama yapınız..."
+        className="w-full rounded-md border border-gray-800 p-4"
       />
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {data.map((item) => (
           <div className="rounded-md bg-gray-800 p-4" key={item.document.id}>
             {highlight(item, "MarkaAdi")}
@@ -49,10 +55,14 @@ export default function Home() {
   );
 }
 
-function highlight(item: any, fieldName: string) {
+function highlight(
+  item: TypesenseApiResponseItem,
+  fieldName: SertifikaItemFieldName,
+) {
   const value = item.highlight[fieldName];
-  if (!value)
+  if (!value) {
     return <div className="text-white">{item.document[fieldName]}</div>;
+  }
   return (
     <div
       className="text-white"
