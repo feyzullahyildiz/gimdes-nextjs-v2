@@ -11,8 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@bprogress/next": "^3.2.12",
-    "next": "^15.4.0-canary.62",
+    "next": "^15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sharp": "^0.34.1",

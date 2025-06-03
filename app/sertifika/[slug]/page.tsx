@@ -1,12 +1,11 @@
 import { getSertifikaById } from "@/service/get-sertifika-by-id";
-import React, { Suspense } from "react";
+import React from "react";
+// import React, { Suspense } from "react";
 import Image from "next/image";
 import { imgUrl } from "@/util/img-url";
 import { formatDate } from "@/util/format-date";
-import { OtherCertificates } from "./_component_/OtherCertificates";
+// import { OtherCertificates } from "./_component_/OtherCertificates";
 import Link from "next/link";
-
-export const experimental_ppr = true;
 
 export default async function Page({
   params,
@@ -20,7 +19,7 @@ export default async function Page({
       <div className="flex flex-1 flex-col gap-4 rounded-md">
         {item.MarkaLogosu && (
           <Image
-            className="w-full flex-1 md:w-min max-h-80"
+            className="max-h-80 w-full flex-1 md:w-min"
             src={imgUrl(item.MarkaLogosu)}
             alt={item.MarkaAdi}
             width={300}
@@ -113,9 +112,9 @@ export default async function Page({
 
         <div className="flex-1"></div>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* <Suspense fallback={<div>Loading...</div>}>
           <OtherCertificates firmaId={item.FirmaId} sertifikaId={item.id} />
-        </Suspense>
+        </Suspense> */}
         <div className="flex flex-col gap-4">
           <h3 className="text-xl font-bold">Sertifika Resimleri</h3>
           <div className="flex flex-wrap gap-4">

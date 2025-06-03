@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { imgUrl } from "@/util/img-url";
 import { cn } from "@/util/cn";
-import { roboto } from "@/util/font";
 
 interface Props {
   item: ISertifikaItem;
@@ -49,7 +48,7 @@ export const SertifikaItemCard = ({ item, className }: Props) => {
           "transition-all duration-300",
         )}
       >
-        <div className={cn("text-2xl font-bold wrap-break-word", roboto.className)}>
+        <div className={cn("text-2xl font-bold wrap-break-word")}>
           {item.MarkaAdi}
         </div>
         <div className={cn("text-xs", "text-gray-500")}>{item.FirmaAdi}</div>
