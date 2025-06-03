@@ -16,7 +16,6 @@ export interface CategoryWithEmoji extends CategoryItem {
 
 export async function getCategories(version?: string) {
   const activeVersion = version || (await getActiveVersion());
-  console.log("getCategories START", activeVersion);
   const response = await fetch(
     `${process.env.JSON_SERVER_API}/api/${activeVersion}/kategoriler/`,
     {
@@ -34,10 +33,8 @@ export async function getCategories(version?: string) {
 export async function getCategoriesWithEmoji(
   version?: string,
 ): Promise<CategoryWithEmoji[]> {
-  console.log("getCategoriesWithEmoji START");
   const categories = await getCategories(version);
   const res = categories.map(withEmoji);
-  console.log("getCategoriesWithEmoji DONE");
   return res;
 }
 

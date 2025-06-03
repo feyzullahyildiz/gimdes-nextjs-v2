@@ -1,11 +1,12 @@
 import { getSertifikaById } from "@/service/get-sertifika-by-id";
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import { imgUrl } from "@/util/img-url";
 import { formatDate } from "@/util/format-date";
+import { OtherCertificates } from "./_component_/OtherCertificates";
+import Link from "next/link";
 
-export const experimental_ppr = true
-
+export const experimental_ppr = true;
 
 export default async function Page({
   params,
@@ -14,12 +15,12 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const item = await getSertifikaById(slug);
-  console.log(item);
   return (
-    <div className="container mx-auto flex flex-1 justify-between gap-8 py-4">
-      <div className="mb-8 flex flex-1 flex-col rounded-md py-4">
+    <div className="container mx-auto flex flex-1 flex-col justify-between gap-8 py-8 lg:flex-row">
+      <div className="flex flex-1 flex-col gap-4 rounded-md">
         {item.MarkaLogosu && (
           <Image
+            className="w-full flex-1 md:w-min max-h-80"
             src={imgUrl(item.MarkaLogosu)}
             alt={item.MarkaAdi}
             width={300}
@@ -27,31 +28,17 @@ export default async function Page({
             priority
           />
         )}
-        <div className="flex flex-col py-4">
-          <MezhebItem text="Hanefi" ok={item.HanefiOk} />
-          <MezhebItem text="Şafi" ok={item.SafiOk} />
-          <MezhebItem text="Hanbeli" ok={item.HanbeliOk} />
-          <MezhebItem text="Maliki" ok={item.MalikiOk} />
-        </div>
-        <div className="flex-1"></div>
-        <div className="flex flex-col">
-          <h3 className="text-lg font-bold">Tarihçe</h3>
-          {item.unstable_Tarihce.map((txt, i) => (
-            <div className="m-0" key={i}>
-              {txt}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/*  */}
-      <div className="flex flex-1 flex-col gap-8 py-4">
         <div>
-          <h1 className="text-4xl font-bold">{item.MarkaAdi}</h1>
-          <p className="text-gray-500">
+          <h1 className="text-center text-4xl font-bold lg:text-left">
+            {item.MarkaAdi}
+          </h1>
+          <Link
+            href={`/kategori/${item.KategoriId}`}
+            className="text-gray-500 underline underline-offset-2"
+          >
             <strong>Kategori: </strong>
             {item.KategoriAdi}
-          </p>
+          </Link>
           <p className="text-gray-500">
             <strong>Son Güncelleme Tarihi: </strong>
             {formatDate(item.GuncellemeTarihi)}
@@ -72,6 +59,7 @@ export default async function Page({
             <p className="text-gray-500">
               <strong>Firma Web Sayfası: </strong>
               <a
+                className="underline underline-offset-2"
                 href={fixWebUrl(item.FirmaWebSayfasi)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -89,8 +77,29 @@ export default async function Page({
             <span className="select-all">{item.FirmaIletisimEmail}</span>
           </p>
         </div>
+
+        <div className="flex flex-col">
+          <MezhebItem text="Hanefi" ok={item.HanefiOk} />
+          <MezhebItem text="Şafi" ok={item.SafiOk} />
+          <MezhebItem text="Hanbeli" ok={item.HanbeliOk} />
+          <MezhebItem text="Maliki" ok={item.MalikiOk} />
+        </div>
+
+        <div className="flex-1"></div>
+        <div className="flex flex-col">
+          <h3 className="text-xl font-bold">Tarihçe</h3>
+          {item.unstable_Tarihce.map((txt, i) => (
+            <div className="m-0" key={i}>
+              {txt}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/*  */}
+      <div className="flex flex-1 flex-col gap-8">
         <section>
-          <h2 className="text-2xl font-bold">Sertifika Kapsamı</h2>
+          <h2 className="text-xl font-bold">Sertifika Kapsamı</h2>
           <div className="flex flex-col">
             <ol>
               {item.unstable_SertifikaKapsami.map((txt, i) => (
@@ -104,18 +113,28 @@ export default async function Page({
 
         <div className="flex-1"></div>
 
+        <Suspense fallback={<div>Loading...</div>}>
+          <OtherCertificates firmaId={item.FirmaId} sertifikaId={item.id} />
+        </Suspense>
         <div className="flex flex-col gap-4">
-          <h3 className="text-lg font-bold">Sertifika Resimleri</h3>
+          <h3 className="text-xl font-bold">Sertifika Resimleri</h3>
           <div className="flex flex-wrap gap-4">
             {item.SertifikaResimleri.map((resim) => (
-              <Image
+              <a
                 key={resim.Filename}
-                src={imgUrl(resim.Filename)}
-                alt={item.MarkaAdi}
-                width={100}
-                height={100}
-                priority={false}
-              />
+                href={imgUrl(resim.Filename)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={imgUrl(resim.Filename)}
+                  alt={item.MarkaAdi}
+                  width={80}
+                  height={120}
+                  priority={false}
+                  className="h-auto w-auto object-contain"
+                />
+              </a>
             ))}
           </div>
         </div>

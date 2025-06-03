@@ -8,11 +8,15 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "gimnet.gimdes.com",
       },
+      {
+        protocol: "https",
+        hostname: "kc3fwedf6dvzii2ff4ga37mrqq0rrtae.lambda-url.eu-central-1.on.aws",
+      },
     ],
   },
   experimental: {
     viewTransition: true,
-    // ppr: "incremental",
+    ppr: "incremental",
   },
 };
 

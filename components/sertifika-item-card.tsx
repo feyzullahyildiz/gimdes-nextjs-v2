@@ -8,11 +8,11 @@ import { roboto } from "@/util/font";
 
 interface Props {
   item: ISertifikaItem;
+  className?: string;
 }
-export const SertifikaItemCard = ({ item }: Props) => {
+export const SertifikaItemCard = ({ item, className }: Props) => {
   return (
     <Link
-      // key={item.id}
       href={`/sertifika/${item.id}`}
       className={cn(
         "min-h-72",
@@ -20,6 +20,7 @@ export const SertifikaItemCard = ({ item }: Props) => {
         "outline-2 outline-gray-100 hover:outline-sky-300",
         "shadow-md hover:shadow-xl",
         "cursor-pointer",
+        className,
       )}
     >
       <div className="relative">
@@ -32,9 +33,9 @@ export const SertifikaItemCard = ({ item }: Props) => {
           className={cn(
             "absolute top-0 right-0",
             "flex items-center justify-center",
-            "size-8 pl-2 pb-2 rounded-bl-full bg-amber-300/30 text-xs font-bold",
+            "size-8 rounded-bl-full bg-amber-300/30 pb-2 pl-2 text-xs font-bold",
             "transition-all duration-300",
-            "group-hover:bg-amber-300/100 group-hover:pb-4 group-hover:pl-4 group-hover:size-12",
+            "group-hover:size-12 group-hover:bg-amber-300/100 group-hover:pb-4 group-hover:pl-4",
           )}
         >
           {item.YildizSayisi}
@@ -48,7 +49,7 @@ export const SertifikaItemCard = ({ item }: Props) => {
           "transition-all duration-300",
         )}
       >
-        <div className={cn("text-2xl font-bold", roboto.className)}>
+        <div className={cn("text-2xl font-bold wrap-break-word", roboto.className)}>
           {item.MarkaAdi}
         </div>
         <div className={cn("text-xs", "text-gray-500")}>{item.FirmaAdi}</div>
