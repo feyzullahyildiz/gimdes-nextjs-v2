@@ -1,6 +1,6 @@
 import React from "react";
 import { ISertifikaItem } from "@/types/typesense/ApiRes";
-import Link from 'next/link';
+import Link from "next/link";
 import Image from "next/image";
 import { imgUrl } from "@/util/img-url";
 import { cn } from "@/util/cn";
@@ -12,33 +12,38 @@ interface Props {
 export const SertifikaItemCard = ({ item }: Props) => {
   return (
     <Link
+      // key={item.id}
       href={`/sertifika/${item.id}`}
-      
       className={cn(
+        "min-h-72",
         "group flex flex-col overflow-hidden rounded-md transition-all duration-300",
         "outline-2 outline-gray-100 hover:outline-sky-300",
         "shadow-md hover:shadow-xl",
         "cursor-pointer",
       )}
-      key={item.id}
     >
-      {item.MarkaLogosu ? (
-        <Image
-          src={imgUrl(item.MarkaLogosu)}
-          alt={item.MarkaAdi || ""}
-          width={160}
-          height={100}
+      <div className="relative">
+        <MainLogo
           className="flex h-32 w-full items-center justify-center object-contain px-2 py-4"
-          priority={false}
+          src={item.MarkaLogosu}
+          alt={item.MarkaAdi}
         />
-      ) : (
-        <div className="flex h-32 w-full items-center justify-center bg-gray-200 object-contain px-2 py-4">
-          <div className=""></div>
+        <div
+          className={cn(
+            "absolute top-0 right-0",
+            "flex items-center justify-center",
+            "size-8 pl-2 pb-2 rounded-bl-full bg-amber-300/30 text-xs font-bold",
+            "transition-all duration-300",
+            "group-hover:bg-amber-300/100 group-hover:pb-4 group-hover:pl-4 group-hover:size-12",
+          )}
+        >
+          {item.YildizSayisi}
         </div>
-      )}
+      </div>
       <div
         className={cn(
           "flex flex-1 flex-col p-4",
+          "bg-gray-50/80",
           "group-hover:bg-blue-50",
           "transition-all duration-300",
         )}
@@ -66,4 +71,28 @@ function getDate(str: string) {
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getFullYear().toString().padStart(4, "0");
   return `${day}/${month}/${year}`;
+}
+
+function MainLogo({
+  src,
+  alt,
+  className,
+}: {
+  src?: string;
+  alt: string;
+  className?: string;
+}) {
+  if (!src) {
+    return <div className={cn(className, "bg-gray-200")}></div>;
+  }
+  return (
+    <Image
+      src={imgUrl(src)}
+      alt={alt}
+      width={160}
+      height={100}
+      className={className}
+      priority={false}
+    />
+  );
 }

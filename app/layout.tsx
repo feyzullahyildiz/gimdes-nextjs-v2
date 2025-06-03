@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { getVersions } from "@/service/get-versions";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { getActiveVersion } from "@/service/get-active-version";
 
 import NavigationProgressBar from "@/components/navigation-progressbar-provider";
+import { cn } from "@/util/cn";
+import { roboto } from "@/util/font";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,14 +17,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const versions = await getVersions();
-  const activeVersion = await getActiveVersion();
   return (
     <html lang="tr">
-      <body className="flex min-h-screen min-w-96 flex-col">
+      <body
+        className={cn("flex min-h-screen min-w-96 flex-col", roboto.className)}
+      >
         <NavigationProgressBar>
-          <Header versions={versions} activeVersion={activeVersion} />
-          <div className="flex-1">{children}</div>
+          <Header />
+          <div className="flex flex-1 flex-col">{children}</div>
           <Footer />
         </NavigationProgressBar>
       </body>
