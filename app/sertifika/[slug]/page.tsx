@@ -1,10 +1,9 @@
 import { getSertifikaById } from "@/service/get-sertifika-by-id";
-import React from "react";
-// import React, { Suspense } from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import { imgUrl } from "@/util/img-url";
 import { formatDate } from "@/util/format-date";
-// import { OtherCertificates } from "./_component_/OtherCertificates";
+import { OtherCertificates } from "./_component_/OtherCertificates";
 import Link from "next/link";
 
 export default async function Page({
@@ -112,9 +111,9 @@ export default async function Page({
 
         <div className="flex-1"></div>
 
-        {/* <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading...</div>}>
           <OtherCertificates firmaId={item.FirmaId} sertifikaId={item.id} />
-        </Suspense> */}
+        </Suspense>
         <div className="flex flex-col gap-4">
           <h3 className="text-xl font-bold">Sertifika Resimleri</h3>
           <div className="flex flex-wrap gap-4">

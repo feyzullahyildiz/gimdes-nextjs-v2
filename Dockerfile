@@ -1,5 +1,5 @@
 # Node.js 22 standart image kullan (Alpine yerine)
-FROM node:22
+FROM node:22-alpine
 
 # Çalışma dizinini ayarla
 WORKDIR /app
