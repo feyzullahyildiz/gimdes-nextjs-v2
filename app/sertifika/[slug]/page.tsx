@@ -6,6 +6,8 @@ import { formatDate } from "@/util/format-date";
 import { OtherCertificates } from "./_component_/OtherCertificates";
 import Link from "next/link";
 
+export const experimental_ppr = true
+
 export default async function Page({
   params,
 }: {
