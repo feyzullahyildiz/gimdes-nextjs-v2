@@ -4,7 +4,7 @@ import { ProgressProvider } from "@bprogress/next/app";
 interface Props {
   children: React.ReactNode;
 }
-export default function NavigationProgressBarProvider({ children }: Props) {
+export const NavigationProgressBarProvider = ({ children }: Props) => {
   return (
     <ProgressProvider
       height="2px"
@@ -15,4 +15,4 @@ export default function NavigationProgressBarProvider({ children }: Props) {
       {children}
     </ProgressProvider>
   );
-}
+};
