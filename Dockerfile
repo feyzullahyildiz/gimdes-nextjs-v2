@@ -9,7 +9,11 @@ COPY package.json package.json
 COPY package-lock.json package-lock.json
 
 # Bağımlılıkları yükle
-RUN npm ci
+# Nextjs'i canary versiyonu ile kullanıyoruz.
+# bazı kütüphaneler (@bprogress/next) Nextjs'in canary versiyonu ile uyumlu değil.
+# force kullanarak yükledik, bir sorun çıkmadı şuana kadar
+# o sebebpten dolayı --force ile yüküyoruz
+RUN npm ci --force
 
 # Uygulama kaynak kodunu kopyala
 COPY . .
