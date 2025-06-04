@@ -24,7 +24,7 @@ export default function Home() {
         placeholder="Arama yapınız..."
         className="w-full rounded-md border border-gray-800 p-4"
       />
-      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
+      <div className="grid flex-wrap gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
         {data.map((item) => (
           <SertifikaItemCard key={item.document.id} item={item.document} />
         ))}

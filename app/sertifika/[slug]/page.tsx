@@ -6,7 +6,7 @@ import { formatDate } from "@/util/format-date";
 import { OtherCertificates } from "./_component_/OtherCertificates";
 import Link from "next/link";
 
-export const experimental_ppr = true
+export const experimental_ppr = true;
 
 export default async function Page({
   params,
@@ -20,7 +20,7 @@ export default async function Page({
       <div className="flex flex-1 flex-col gap-4 rounded-md">
         {item.MarkaLogosu && (
           <Image
-            className="max-h-80 w-full flex-1 md:w-min"
+            className="mx-auto max-h-80 flex-1 md:w-min lg:mx-0"
             src={imgUrl(item.MarkaLogosu)}
             alt={item.MarkaAdi}
             width={300}
@@ -29,7 +29,7 @@ export default async function Page({
           />
         )}
         <div>
-          <h1 className="text-center text-4xl font-bold lg:text-left">
+          <h1 className="mb-4 text-center text-4xl font-bold lg:text-left">
             {item.MarkaAdi}
           </h1>
           <Link
@@ -41,7 +41,7 @@ export default async function Page({
           </Link>
           <p className="text-gray-500">
             <strong>Son Güncelleme Tarihi: </strong>
-            {formatDate(item.GuncellemeTarihi)}
+            {formatDate(item.GuncellemeTarihi, { hideHour: true })}
           </p>
         </div>
 
@@ -75,6 +75,10 @@ export default async function Page({
           <p className="text-gray-500">
             <strong>İletişim Email: </strong>
             <span className="select-all">{item.FirmaIletisimEmail}</span>
+          </p>
+          <p className="text-gray-500">
+            <strong>İlk Sertifika Alım Tarihi: </strong>
+            {formatDate(item.IlkSertifikaAlimTarihi, { hideHour: true })}
           </p>
         </div>
 

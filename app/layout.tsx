@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 
 import { cn } from "@/util/cn";
 import NavigationProgressBarProvider from "@/components/navigation-progressbar-provider";
-// import { roboto } from "@/util/font";
+import { roboto } from "@/util/font";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +19,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="tr">
-      <body className={cn("flex min-h-screen min-w-96 flex-col")}>
+      <body className={cn("flex min-h-screen min-w-96 flex-col", roboto.className)}>
         <NavigationProgressBarProvider>
           <Header />
           <div className="flex flex-1 flex-col">{children}</div>

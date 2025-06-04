@@ -1,5 +1,4 @@
 import { Tag } from "./tag.enum";
-import { getActiveVersion } from "./get-active-version";
 
 import { unstable_cache as cache } from "next/cache";
 export interface CategoryItem {
@@ -14,10 +13,9 @@ export interface CategoryWithEmoji extends CategoryItem {
   orjName: string;
 }
 
-export async function getCategories(version?: string) {
-  const activeVersion = version || (await getActiveVersion());
+export async function getCategories() {
   const response = await fetch(
-    `${process.env.JSON_SERVER_API}/api/${activeVersion}/kategoriler/`,
+    `${process.env.JSON_SERVER_API}/api/latest/kategoriler/`,
     {
       next: {
         revalidate: 60,
@@ -31,9 +29,8 @@ export async function getCategories(version?: string) {
 }
 
 export async function getCategoriesWithEmoji(
-  version?: string,
 ): Promise<CategoryWithEmoji[]> {
-  const categories = await getCategories(version);
+  const categories = await getCategories();
   const res = categories.map(withEmoji);
   return res;
 }

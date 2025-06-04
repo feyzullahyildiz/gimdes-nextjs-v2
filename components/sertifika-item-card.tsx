@@ -8,13 +8,18 @@ import { cn } from "@/util/cn";
 interface Props {
   item: ISertifikaItem;
   className?: string;
+  showCategory?: boolean;
 }
-export const SertifikaItemCard = ({ item, className }: Props) => {
+export const SertifikaItemCard = ({
+  item,
+  className,
+  showCategory = false,
+}: Props) => {
   return (
     <Link
       href={`/sertifika/${item.id}`}
       className={cn(
-        "min-h-72",
+        "min-h-72 min-w-56",
         "group flex flex-col overflow-hidden rounded-md transition-all duration-300",
         "outline-2 outline-gray-100 hover:outline-sky-300",
         "shadow-md hover:shadow-xl",
@@ -53,8 +58,20 @@ export const SertifikaItemCard = ({ item, className }: Props) => {
         </div>
         <div className={cn("text-xs", "text-gray-500")}>{item.FirmaAdi}</div>
         <div className="min-h-8 flex-1"></div>
-        <div className={cn("flex justify-between text-xs", "text-gray-500")}>
-          <span>Sertifika Bitiş Tarihi :</span>
+
+        {showCategory && (
+          <>
+            <div
+              className={cn("flex justify-between text-sm", "text-gray-500")}
+            >
+              {/* <span>Kategori :</span> */}
+              <span>{item.KategoriAdi}</span>
+            </div>
+            <br />
+          </>
+        )}
+        <div className={cn("flex justify-between text-sm", "text-gray-500")}>
+          <span>Sertifika Bitiş :</span>
           <span>{getDate(item.SertifikaBitisTarihi)}</span>
         </div>
       </div>

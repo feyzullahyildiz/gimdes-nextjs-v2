@@ -19,7 +19,7 @@ export default async function Page({
       </div>
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
         {sertifikalar.map((sertifika) => (
-          <SertifikaItemCard key={sertifika.id} item={sertifika} />
+          <SertifikaItemCard key={sertifika.id} item={sertifika} showCategory />
         ))}
       </div>
     </div>
