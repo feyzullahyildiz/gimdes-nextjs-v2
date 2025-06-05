@@ -1,19 +1,26 @@
 import React from "react";
-import { ISertifikaItem } from "@/types/typesense/ApiRes";
+import {
+  ISertifikaItem,
+  SertifikaItemFieldName,
+  TypesenseSertifikaItemHighlight,
+} from "@/types/typesense/ApiRes";
 import Link from "next/link";
 import Image from "next/image";
-import { imgUrl } from "@/util/img-url";
+import { getImageUrl } from "@/util/img-url";
 import { cn } from "@/util/cn";
+import parse from "html-react-parser";
 
 interface Props {
   item: ISertifikaItem;
   className?: string;
   showCategory?: boolean;
+  highlight?: TypesenseSertifikaItemHighlight;
 }
 export const SertifikaItemCard = ({
   item,
   className,
   showCategory = false,
+  highlight,
 }: Props) => {
   return (
     <Link
@@ -33,7 +40,7 @@ export const SertifikaItemCard = ({
           src={item.MarkaLogosu}
           alt={item.MarkaAdi}
         />
-        <div
+        {/* <div
           className={cn(
             "absolute top-0 right-0",
             "flex items-center justify-center",
@@ -43,7 +50,7 @@ export const SertifikaItemCard = ({
           )}
         >
           {item.YildizSayisi}
-        </div>
+        </div> */}
       </div>
       <div
         className={cn(
@@ -53,10 +60,18 @@ export const SertifikaItemCard = ({
           "transition-all duration-300",
         )}
       >
-        <div className={cn("text-2xl font-bold wrap-break-word")}>
-          {item.MarkaAdi}
-        </div>
-        <div className={cn("text-xs", "text-gray-500")}>{item.FirmaAdi}</div>
+        {renderField(
+          item,
+          "MarkaAdi",
+          cn("text-2xl font-bold wrap-break-word"),
+          highlight,
+        )}
+        {renderField(
+          item,
+          "FirmaAdi",
+          cn("text-xs", "text-gray-500"),
+          highlight,
+        )}
         <div className="min-h-8 flex-1"></div>
 
         {showCategory && (
@@ -64,7 +79,6 @@ export const SertifikaItemCard = ({
             <div
               className={cn("flex justify-between text-sm", "text-gray-500")}
             >
-              {/* <span>Kategori :</span> */}
               <span>{item.KategoriAdi}</span>
             </div>
             <br />
@@ -104,7 +118,7 @@ function MainLogo({
   }
   return (
     <Image
-      src={imgUrl(src)}
+      src={getImageUrl(src)}
       alt={alt}
       width={160}
       height={100}
@@ -112,4 +126,19 @@ function MainLogo({
       priority={false}
     />
   );
+}
+
+function renderField(
+  item: ISertifikaItem,
+  field: SertifikaItemFieldName,
+  className?: string,
+  highlight?: TypesenseSertifikaItemHighlight,
+) {
+  if (!highlight) {
+    return <div className={className}>{item[field]}</div>;
+  }
+  if (!highlight[field]) {
+    return <div className={className}>{item[field]}</div>;
+  }
+  return <div className={className}>{parse(highlight[field].snippet)}</div>;
 }

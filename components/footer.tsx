@@ -1,9 +1,14 @@
 import React from "react";
-
-export const Footer = () => {
+import { getUpdateTime } from "@/service/get-update-time";
+import { formatDate } from "@/util/format-date";
+export const Footer = async () => {
+  const { latest, hash } = await getUpdateTime();
   return (
-    <div className="">
-      <div className="container mx-auto p-4">Footer</div>
+    <div className="bg-secondary">
+      <div className="container mx-auto p-4">
+        <div>Son Güncelleme tarihi: {formatDate(latest)}</div>
+        <div>Son Güncelleme hash: {hash}</div>
+      </div>
     </div>
   );
 };

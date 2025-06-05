@@ -1,7 +1,7 @@
 import { getSertifikaById } from "@/service/get-sertifika-by-id";
 import React, { Suspense } from "react";
 import Image from "next/image";
-import { imgUrl } from "@/util/img-url";
+import { getImageUrl, getProxiedImageUrl } from "@/util/img-url";
 import { formatDate } from "@/util/format-date";
 import { OtherCertificates } from "./_component_/OtherCertificates";
 import Link from "next/link";
@@ -21,7 +21,7 @@ export default async function Page({
         {item.MarkaLogosu && (
           <Image
             className="mx-auto max-h-80 flex-1 md:w-min lg:mx-0"
-            src={imgUrl(item.MarkaLogosu)}
+            src={getImageUrl(item.MarkaLogosu)}
             alt={item.MarkaAdi}
             width={300}
             height={300}
@@ -126,12 +126,12 @@ export default async function Page({
             {item.SertifikaResimleri.map((resim) => (
               <a
                 key={resim.Filename}
-                href={imgUrl(resim.Filename)}
+                href={getProxiedImageUrl(resim.Filename)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Image
-                  src={imgUrl(resim.Filename)}
+                  src={getImageUrl(resim.Filename)}
                   alt={item.MarkaAdi}
                   width={80}
                   height={120}

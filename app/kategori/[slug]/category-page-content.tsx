@@ -3,11 +3,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { SertifikaItemCard } from "@/components/sertifika-item-card";
-import type { ISertifikaItem, TypesenseApiResponse } from "@/types/typesense/ApiRes";
+import type {
+  TypesenseApiResponse,
+  TypesenseApiResponseItem,
+} from "@/types/typesense/ApiRes";
 import { ICategory } from "@/types/api/category";
 
 interface CategoryPageContentProps {
-  initialProducts: ISertifikaItem[];
+  initialProducts: Partial<
+    Omit<
+      TypesenseApiResponseItem,
+      "text_match" | "highlights" | "text_match_info"
+    >
+  >[];
   category: ICategory;
   categorySlug: string;
 }
@@ -34,7 +42,9 @@ export function CategoryPageContent({
   category,
   categorySlug,
 }: CategoryPageContentProps) {
-  const [products, setProducts] = useState<ISertifikaItem[]>(initialProducts);
+  const [products, setProducts] = useState<Partial<TypesenseApiResponseItem>[]>(
+    [],
+  );
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -61,9 +71,8 @@ export function CategoryPageContent({
 
         const hits = data.hits as TypesenseApiResponse;
         console.log("hits", hits);
-        const searchResults =  hits.map((hit) => hit.document)
 
-        setProducts(searchResults);
+        setProducts(hits);
       } catch (error) {
         console.error("Arama hatası:", error);
         setProducts(initialProducts);
@@ -125,7 +134,11 @@ export function CategoryPageContent({
       </div>
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
         {products.map((item) => (
-          <SertifikaItemCard key={item.id} item={item} />
+          <SertifikaItemCard
+            key={item.document!.id}
+            item={item.document!}
+            highlight={item.highlight}
+          />
         ))}
       </div>
       {products.length === 0 && searchTerm && !isLoading && (

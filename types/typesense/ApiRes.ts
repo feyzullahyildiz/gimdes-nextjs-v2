@@ -38,14 +38,15 @@ export type ISertifikaItem = {
   unstable_SertifikaKapsami: Array<string>;
   unstable_Tarihce: Array<string>;
 };
+export type TypesenseSertifikaItemHighlight = {
+  [key in SertifikaItemFieldName]: {
+    matched_tokens: Array<string>;
+    snippet: string;
+  };
+};
 export type TypesenseApiResponseItem = {
   document: ISertifikaItem;
-  highlight: {
-    [key in SertifikaItemFieldName]: {
-      matched_tokens: Array<string>;
-      snippet: string;
-    };
-  };
+  highlight: TypesenseSertifikaItemHighlight;
   highlights: Array<{
     field: string;
     matched_tokens: Array<string>;

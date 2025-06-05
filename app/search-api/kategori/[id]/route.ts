@@ -18,8 +18,8 @@ export async function GET(
     .documents()
     .search({
       q: query,
-      query_by: ["FirmaAdi", "MarkaAdi"],
-      // query_by_weights: [2, 2, 1],
+      query_by: ["MarkaAdi", "FirmaAdi"],
+      query_by_weights: [2, 1],
       //   sort_by: "_text_match:desc",
       filter_by: `KategoriId:${id}`, // Kategori ID'sine göre filtreleme
       per_page: 30,

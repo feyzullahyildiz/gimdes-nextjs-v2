@@ -13,10 +13,10 @@ export async function GET(request: NextRequest) {
     .documents()
     .search({
       q: query,
-      query_by: ["FirmaAdi", "MarkaAdi"],
-      // query_by_weights: [2, 2, 1],
+      query_by: ["MarkaAdi", "FirmaAdi"],
+      query_by_weights: [2, 1],
       //   sort_by: "_text_match:desc",
-      per_page: 30,
+      per_page: 24,
       //   prefix: ["marka", "ad"],
       //   prefix: "ad",
       //   prefix: ["ad", "marka", "kat_adi", "sert_kap", "kap_oniz"].join(","),

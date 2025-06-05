@@ -13,10 +13,12 @@ export default async function Page({
     getProductsByCategory(slug),
     getCategoryById(slug),
   ]);
-  
+  const partialProducts = products.map((product) => ({
+    document: product,
+  }));
   return (
     <CategoryPageContent 
-      initialProducts={products}
+      initialProducts={partialProducts}
       category={category}
       categorySlug={slug}
     />
