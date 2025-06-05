@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { cn } from "@/util/cn";
+import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 
 const LOCAL_STORAGE_KEY = "cookie-consent-closed";

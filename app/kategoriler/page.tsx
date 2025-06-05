@@ -1,6 +1,6 @@
 import { getCachedCategoriesWithEmoji } from "@/service/get-kategories";
 import React from "react";
-import { cn } from "@/util/cn";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default async function Page() {

@@ -2,13 +2,17 @@
 import { SertifikaItemCard } from "@/components/sertifika-item-card";
 import { Input } from "@/components/ui/input";
 import { TypesenseApiResponse } from "@/types/typesense/ApiRes";
-import { cn } from "@/util/cn";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [search, setSearch] = useState("");
   const [data, setData] = useState<TypesenseApiResponse>([]);
   useEffect(() => {
+    if (search.trim().length === 0) {
+      setData([]);
+      return;
+    }
     const fetchData = async () => {
       const response = await fetch(`/search-api?q=${search}`);
       const data = await response.json();
@@ -23,6 +27,7 @@ export default function Home() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Arama yapınız..."
+        autoFocus
       />
       <div className="grid flex-wrap gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
         {data.map((item) => (

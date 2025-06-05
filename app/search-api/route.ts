@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
       query_by: ["MarkaAdi", "FirmaAdi"],
       query_by_weights: [2, 1],
       //   sort_by: "_text_match:desc",
-      per_page: 24,
+      per_page: 10,
       //   prefix: ["marka", "ad"],
       //   prefix: "ad",
       //   prefix: ["ad", "marka", "kat_adi", "sert_kap", "kap_oniz"].join(","),

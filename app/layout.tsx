@@ -3,7 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-import { cn } from "@/util/cn";
+import { cn } from "@/lib/utils";
 import { Providers } from "@/components/provider";
 import { roboto } from "@/util/font";
 import { CookieConsent } from "@/components/cookie-consent";

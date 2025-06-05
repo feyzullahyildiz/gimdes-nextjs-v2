@@ -7,7 +7,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { getImageUrl } from "@/util/img-url";
-import { cn } from "@/util/cn";
+import { cn } from "@/lib/utils";
 import parse from "html-react-parser";
 
 interface Props {
