@@ -8,6 +8,8 @@ import Link from "next/link";
 
 export const experimental_ppr = true;
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({
   params,
 }: {

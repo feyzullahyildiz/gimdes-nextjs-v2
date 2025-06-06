@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     "Bu site, GİMDES'in resmi helal sertifikalı firmalarını güncel teknolojilerle kullanıcı dostu bir arayüzde sunar. Firma isimleri, logoları ve sertifika bilgileri orijinal kaynaktan alınmıştır. Eğitim ve toplumsal fayda amacıyla geliştirilmiştir.",
 };
 
+export const dynamic = "force-dynamic";
+export const revalidate = 60;
+
 export default async function RootLayout({
   children,
 }: Readonly<{

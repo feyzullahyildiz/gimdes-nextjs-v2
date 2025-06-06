@@ -3,6 +3,8 @@ import { getProductsByCategory } from "@/service/get-products";
 import { getCategoryById } from "@/service/get-category-by-id";
 import { CategoryPageContent } from "./category-page-content";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({
   params,
 }: {

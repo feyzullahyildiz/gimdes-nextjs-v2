@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 export default function Page() {
   return (
     <div className="prose prose-sm sm:prose lg:prose-lg container mx-auto px-4 py-8">

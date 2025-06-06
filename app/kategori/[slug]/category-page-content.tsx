@@ -1,5 +1,6 @@
 "use client";
 
+// TODO bu componeti bu path'den çıkart
 import React, { useState, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { SertifikaItemCard } from "@/components/sertifika-item-card";

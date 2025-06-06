@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { getCategoriesWithEmoji } from "@/service/get-kategories";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const categories = await getCategoriesWithEmoji();
   return (
@@ -48,5 +50,3 @@ export default async function Page() {
     </div>
   );
 }
-export const dynamic = "auto";
-export const revalidate = 60;

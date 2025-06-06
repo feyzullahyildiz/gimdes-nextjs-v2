@@ -3,6 +3,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+export const dynamic = "force-static";
+
 export default function Page() {
   return (
     <div className="container mx-auto my-8">

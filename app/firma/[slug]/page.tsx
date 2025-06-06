@@ -3,6 +3,8 @@ import { getFirmaById } from "@/service/get-firma-by-id";
 import { getSertifikasByIdArray } from "@/service/get-sertifikas-by-id-array";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({
   params,
 }: {

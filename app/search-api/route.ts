@@ -1,13 +1,12 @@
 import { type NextRequest } from "next/server";
-import { typeSenseClient } from "@/lib/typesense/client";
+import { getTypeSenseClient } from "@/lib/typesense/client";
 import { NextResponse } from "next/server";
 
-// export const revalidate = 60;
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const query = searchParams.get("q") || "";
 
-  const result = await typeSenseClient
+  const result = await getTypeSenseClient()
     // .collections("items")
     .collections("latest_sertifikalar")
     .documents()
