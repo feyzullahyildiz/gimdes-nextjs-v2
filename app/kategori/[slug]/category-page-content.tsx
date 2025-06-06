@@ -50,13 +50,11 @@ export function CategoryPageContent({
   const [isLoading, setIsLoading] = useState(false);
 
   // Debounced search term
-  const debouncedSearchTerm = useDebounce(searchTerm, 100);
-  //   console.log("searchTerm", searchTerm);
-  //   console.log("debouncedSearchTerm", debouncedSearchTerm);
+  const debouncedSearchTerm = useDebounce(searchTerm, 80);
 
   // Search function
   const searchProducts = useCallback(
-    async (term: string) => {
+    async (term: string, abortController: AbortController) => {
       if (!term.trim()) {
         setProducts(initialProducts);
         setIsLoading(false);
@@ -67,11 +65,13 @@ export function CategoryPageContent({
         setIsLoading(true);
         const response = await fetch(
           `/search-api/kategori/${categorySlug}?q=${encodeURIComponent(term)}`,
+          {
+            signal: abortController.signal,
+          },
         );
         const data = await response.json();
 
         const hits = data.hits as TypesenseApiResponse;
-        console.log("hits", hits);
 
         setProducts(hits);
       } catch (error) {
@@ -86,7 +86,11 @@ export function CategoryPageContent({
 
   // Effect for debounced search
   useEffect(() => {
-    searchProducts(debouncedSearchTerm);
+    const abortController = new AbortController();
+    searchProducts(debouncedSearchTerm, abortController);
+    return () => {
+      abortController.abort();
+    };
   }, [debouncedSearchTerm, searchProducts]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -133,7 +137,7 @@ export function CategoryPageContent({
           )}
         </div>
       </div>
-      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
+      <div className="grid gap-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 2xl:grid-cols-6">
         {products.map((item) => (
           <SertifikaItemCard
             key={item.document!.id}

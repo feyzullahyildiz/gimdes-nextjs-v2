@@ -23,10 +23,10 @@ COPY . .
 # Çok ilginç bir olay ile karşı karşıyayız.
 # NextJS build esnasında çok fazla istek yapıyor. client side request yapıtğın api'ini bile çağırıyor.
 # O yüzden image'da build etmekten vaz geçtim. Container run edilirken build edilecek.
-# RUN npm run build
+RUN npm run build
 
 # Port 3000'i aç
 EXPOSE 3000
 
 # Uygulamayı başlat
-CMD ["npm", "run", "build-and-start"] 
+CMD ["npm", "run", "start"] 

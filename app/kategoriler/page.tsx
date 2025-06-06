@@ -9,21 +9,24 @@ export default async function Page() {
   const categories = await getCategoriesWithEmoji();
   return (
     <div className="container mx-auto py-4">
-      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
+      <div className="grid gap-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 2xl:grid-cols-6">
         {categories.map((category) => (
           <Link
             href={`/kategori/${category.id}`}
             key={category.id}
             className={cn(
-              "min-h-60 min-w-56",
-              "group flex flex-col overflow-hidden rounded-md transition-all duration-300",
+              "min-h-auto min-w-56 md:min-h-60",
+              "flex-row md:flex-col",
+              "group flex overflow-hidden rounded-md transition-all duration-300",
               "outline-2 outline-gray-100 hover:outline-sky-300",
               "shadow-md hover:shadow-xl",
               "cursor-pointer",
             )}
           >
-            <div className="relative flex h-32 items-center justify-center">
-              <span className="p-4 text-center text-6xl">{category.emoji}</span>
+            <div className="relative flex h-auto w-32 items-center justify-center md:h-32 md:w-auto">
+              <span className="p-4 text-center text-2xl md:text-6xl">
+                {category.emoji}
+              </span>
             </div>
 
             <span

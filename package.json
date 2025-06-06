@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build-and-start": "npm-run-all build start",
     "build": "next build",
     "start": "next start",
     "prettier:check": "prettier . --check",
@@ -19,8 +18,7 @@
     "clsx": "^2.1.1",
     "html-react-parser": "^5.2.5",
     "lucide-react": "^0.512.0",
-    "next": "^15.4.0-canary.62",
-    "npm-run-all": "^4.1.5",
+    "next": "^15.4.0-canary.69",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sharp": "^0.34.1",

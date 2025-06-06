@@ -8,7 +8,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { getImageUrl } from "@/util/img-url";
 import { cn } from "@/lib/utils";
-import parse from "html-react-parser";
 
 interface Props {
   item: ISertifikaItem;
@@ -26,8 +25,9 @@ export const SertifikaItemCard = ({
     <Link
       href={`/sertifika/${item.id}`}
       className={cn(
-        "min-h-72 min-w-56",
-        "group flex flex-col overflow-hidden rounded-md transition-all duration-300",
+        "min-h-auto min-w-56 md:min-h-72",
+        "group overflow-hidden rounded-md transition-all duration-300",
+        "flex flex-row md:flex-col",
         "outline-2 outline-gray-100 hover:outline-sky-300",
         "shadow-md hover:shadow-xl",
         "cursor-pointer",
@@ -36,7 +36,10 @@ export const SertifikaItemCard = ({
     >
       <div className="relative">
         <MainLogo
-          className="flex h-32 w-full items-center justify-center object-contain px-2 py-4"
+          className={cn(
+            "flex items-center justify-center object-contain px-2 py-4",
+            "size-20 md:size-auto md:h-32",
+          )}
           src={item.MarkaLogosu}
           alt={item.MarkaAdi}
         />
@@ -60,19 +63,20 @@ export const SertifikaItemCard = ({
           "transition-all duration-300",
         )}
       >
-        {renderField(
-          item,
-          "MarkaAdi",
-          cn("text-2xl font-bold wrap-break-word"),
-          highlight,
-        )}
-        {renderField(
-          item,
-          "FirmaAdi",
-          cn("text-xs", "text-gray-500"),
-          highlight,
-        )}
-        <div className="min-h-8 flex-1"></div>
+        <RenderField
+          item={item}
+          field="MarkaAdi"
+          className={cn("text-2xl font-bold wrap-break-word")}
+          highlight={highlight}
+        />
+
+        <RenderField
+          item={item}
+          field="FirmaAdi"
+          className={cn("text-xs", "text-gray-500")}
+          highlight={highlight}
+        />
+        <div className="hidden min-h-8 flex-1 md:block"></div>
 
         {showCategory && (
           <>
@@ -128,17 +132,28 @@ function MainLogo({
   );
 }
 
-function renderField(
-  item: ISertifikaItem,
-  field: SertifikaItemFieldName,
-  className?: string,
-  highlight?: TypesenseSertifikaItemHighlight,
-) {
+function RenderField({
+  item,
+  field,
+  className,
+  highlight,
+}: {
+  item: ISertifikaItem;
+  field: SertifikaItemFieldName;
+  className?: string;
+  highlight?: TypesenseSertifikaItemHighlight;
+}) {
   if (!highlight) {
     return <div className={className}>{item[field]}</div>;
   }
   if (!highlight[field]) {
     return <div className={className}>{item[field]}</div>;
   }
-  return <div className={className}>{parse(highlight[field].snippet)}</div>;
+
+  return (
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: highlight[field].snippet }}
+    ></div>
+  );
 }
