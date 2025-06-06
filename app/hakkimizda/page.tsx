@@ -8,29 +8,35 @@ export default function Page() {
     <div className="container mx-auto my-8">
       <h1 className="mb-4 text-2xl font-bold">Hakkımızda</h1>
       <p>
-        Bu uygulama, GİMDES&#39;in resmi sitesindeki eksiklikleri gidermek ve
-        güncel teknolojileri kullanarak kullanıcı deneyimini geliştirmek
-        amacıyla <strong>üçüncü parti</strong> bir yazılım olarak{" "}
-        <strong>bağımsız</strong> geliştirici tarafından hazırlanmıştır.
+        Bu platform, GİMDES tarafından sunulan helal sertifika bilgilerini daha
+        modern ve kullanıcı dostu bir arayüzle erişilebilir kılmak amacıyla{" "}
+        <strong>bağımsız</strong> olarak geliştirilen{" "}
+        <strong>üçüncü parti</strong> bir uygulamadır.
       </p>
       <p>
-        Amacımız, kullanıcı deneyimini iyileştirmektir. Mümkün olduğunca yeni
-        teknolojileri kullanarak hızlı uygulama deneyimi sunmak istiyoruz.
+        Projenin temel hedefi, mevcut sistemdeki kullanılabilirlik sorunlarını
+        ele alarak modern web teknolojileri ile gelişmiş bir kullanıcı deneyimi
+        sunmaktır. Performans optimizasyonu ve gelişmiş arama fonksiyonları
+        aracılığıyla kullanıcıların ihtiyaç duydukları bilgilere daha hızlı ve
+        etkin bir şekilde ulaşabilmelerini sağlamayı amaçlamaktadır.
       </p>
       <p>
-        Örneğin, asıl uygulamada Peynir diye arama yaptığınızda sadece 2 tane
-        firmanın listelendiğini görüyordunuz (Şuanda düzeltmişler). Bu
-        uygulamayı geliştirmek istememe sebep olan bir nokta bu.
+        Geliştirme sürecinde karşılaşılan teknik eksiklikler ve kullanıcı
+        deneyimi sorunları, bu projenin başlatılmasında temel motivasyon
+        kaynağını oluşturmuştur. Arama algoritmalarının iyileştirilmesi ve
+        sonuçların daha kapsamlı listelenmesi gibi teknik düzenlemeler
+        gerçekleştirilmiştir.
       </p>
       <br />
       <p>
-        Gimdesten ricamız: Uygulamanın geliştirilmesine engel olunmaması. Destek
-        olunduğu takdirde Açık Kaynak olarak geliştirmek isterim. Yasal
-        sorumluluk almak istemediğim için şimdilik bu şekilde devam
-        edeceğim.{" "}
+        Bu proje, eğitimsel ve toplumsal fayda amacı güder. Telif hakları ve
+        yasal sorumluluklar konusundaki hassasiyetimiz nedeniyle, projenin açık
+        kaynak kodlu hale getirilmesi ve daha geniş bir geliştirici
+        topluluğunun katkısına açılması ancak uygun koşulların oluşması
+        durumunda mümkün olacaktır.
       </p>
       <br />
-      <h2 className="mb-4 text-lg font-bold">Uygulama Yol Haritası</h2>
+      <h2 className="mb-1 text-lg font-bold">Uygulama Yol Haritası</h2>
       <Item done>Kategorilere UTF-8 emoji desteği eklenmesi</Item>
       <Item done>Arama sonuçlarında vurgulama (highlight) desteği</Item>
       <Item>Koyu tema desteği</Item>
@@ -57,13 +63,22 @@ export default function Page() {
       </Item>
       <br />
 
-      <h2 className="mb-4 text-lg font-bold">Sürüm Notları</h2>
+      <h2 className="mt-4 text-lg font-bold">Sürüm Notları</h2>
       <p>
         Sürüm notları için{" "}
         <Link href="/surum-notlari" className="underline">
           buraya
         </Link>{" "}
         tıklayınız.
+      </p>
+
+      <h2 className="mt-4 text-lg font-bold">Hukuki Uyarı</h2>
+      <p>
+        Telif hakları ve yasal sorumluluklar hakkında detaylı bilgi için{" "}
+        <Link href="/hukuki-uyari" className="underline">
+          hukuki uyarı
+        </Link>{" "}
+        sayfasını inceleyebilirsiniz.
       </p>
     </div>
   );

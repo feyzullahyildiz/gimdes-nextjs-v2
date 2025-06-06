@@ -28,6 +28,7 @@ export default function Home() {
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Arama yapınız..."
         autoFocus
+        className="bg-secondary sticky top-18 z-10 w-full px-4 py-6 text-primary"
       />
       <div className="grid flex-wrap gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
         {data.map((item) => (

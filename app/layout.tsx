@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+
+import "./globals.css";
 
 import { cn } from "@/lib/utils";
 import { Providers } from "@/components/provider";
@@ -9,8 +10,9 @@ import { roboto } from "@/util/font";
 import { CookieConsent } from "@/components/cookie-consent";
 
 export const metadata: Metadata = {
-  title: "Gimdes 🄯 - 𝖋𝖆k𝖊",
-  description: "Üçüncü parti Gimdes uygulaması",
+  title: "Helal Sertifika Firmaları - Modern ve Kullanıcı Dostu Liste | gimdes.site",
+  description:
+    "Bu site, GİMDES'in resmi helal sertifikalı firmalarını güncel teknolojilerle kullanıcı dostu bir arayüzde sunar. Firma isimleri, logoları ve sertifika bilgileri orijinal kaynaktan alınmıştır. Eğitim ve toplumsal fayda amacıyla geliştirilmiştir.",
 };
 
 export default async function RootLayout({
