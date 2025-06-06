@@ -48,4 +48,5 @@ export default async function Page() {
     </div>
   );
 }
+export const dynamic = "auto";
 export const revalidate = 60;
