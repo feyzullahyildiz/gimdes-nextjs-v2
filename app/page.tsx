@@ -13,6 +13,7 @@ export default function Home() {
       setData([]);
       return;
     }
+    // TODO abort controller eklenecek
     const fetchData = async () => {
       const response = await fetch(`/search-api?q=${search}`);
       const data = await response.json();

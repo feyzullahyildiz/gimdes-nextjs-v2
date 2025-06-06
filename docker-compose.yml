@@ -10,6 +10,12 @@ services:
       - "127.0.0.1:8080:3000"
     environment:
       - NODE_ENV=production
+      - JSON_SERVER_API=${JSON_SERVER_API}
+      - TYPESENSE_HOST=${TYPESENSE_HOST}
+      - TYPESENSE_PORT=${TYPESENSE_PORT}
+      - TYPESENSE_API_KEY=${TYPESENSE_API_KEY}
+      - TYPESENSE_PROTOCOL=${TYPESENSE_PROTOCOL}
+      - TYPESENSE_PATH=${TYPESENSE_PATH}
     restart: unless-stopped
     networks:
       - gimdes-network
