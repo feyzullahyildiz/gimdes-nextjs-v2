@@ -29,4 +29,4 @@ COPY . .
 EXPOSE 3000
 
 # Uygulamayı başlat
-CMD ["npm", "run", "build", "&&", "npm", "start"] 
+CMD ["npm", "run", "build-and-start"] 
