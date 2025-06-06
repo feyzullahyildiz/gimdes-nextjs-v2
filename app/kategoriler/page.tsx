@@ -1,10 +1,10 @@
-import { getCachedCategoriesWithEmoji } from "@/service/get-kategories";
 import React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { getCategoriesWithEmoji } from "@/service/get-kategories";
 
 export default async function Page() {
-  const categories = await getCachedCategoriesWithEmoji();
+  const categories = await getCategoriesWithEmoji();
   return (
     <div className="container mx-auto py-4">
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">

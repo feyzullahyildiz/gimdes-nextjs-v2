@@ -1,6 +1,4 @@
 import { Tag } from "./tag.enum";
-
-import { unstable_cache as cache } from "next/cache";
 export interface CategoryItem {
   id: string;
   KategoriAdi: string;
@@ -31,14 +29,10 @@ export async function getCategories() {
 export async function getCategoriesWithEmoji(
 ): Promise<CategoryWithEmoji[]> {
   const categories = await getCategories();
-  const res = categories.map(withEmoji);
+  const res = categories.map(c => withEmoji(c));
   return res;
 }
 
-export const getCachedCategoriesWithEmoji = cache(getCategoriesWithEmoji, [], {
-  revalidate: 60,
-  tags: [Tag.CATEGORIES],
-});
 function withEmoji(category: CategoryItem): CategoryWithEmoji {
   const name = category.KategoriAdi.split("/")[0].trim();
 
