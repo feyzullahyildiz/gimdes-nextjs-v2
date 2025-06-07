@@ -36,29 +36,29 @@ export default async function Page({
           </h1>
           <Link
             href={`/kategori/${item.KategoriId}`}
-            className="text-gray-500 underline underline-offset-2"
+            className="underline underline-offset-2"
           >
             <strong>Kategori: </strong>
             {item.KategoriAdi}
           </Link>
-          <p className="text-gray-500">
+          <p>
             <strong>Son Güncelleme Tarihi: </strong>
             {formatDate(item.GuncellemeTarihi, { hideHour: true })}
           </p>
         </div>
 
         <div>
-          <p className="text-gray-500">
+          <p>
             <strong>Firma Adı: </strong>
             {item.FirmaAdi}
           </p>
-          <p className="text-gray-500">
+          <p>
             <strong>Firma Adresi: </strong>
             {item.FirmaAdresi}
           </p>
 
           {item.FirmaWebSayfasi && (
-            <p className="text-gray-500">
+            <p>
               <strong>Firma Web Sayfası: </strong>
               <a
                 className="underline underline-offset-2"
@@ -70,15 +70,15 @@ export default async function Page({
               </a>
             </p>
           )}
-          <p className="text-gray-500">
+          <p>
             <strong>İletişim: </strong>
             <span className="select-all">{item.FirmaTelefon}</span>
           </p>
-          <p className="text-gray-500">
+          <p>
             <strong>İletişim Email: </strong>
             <span className="select-all">{item.FirmaIletisimEmail}</span>
           </p>
-          <p className="text-gray-500">
+          <p>
             <strong>İlk Sertifika Alım Tarihi: </strong>
             {formatDate(item.IlkSertifikaAlimTarihi, { hideHour: true })}
           </p>
@@ -119,7 +119,8 @@ export default async function Page({
 
         <div className="flex-1"></div>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* TODO buraya skeleton ekleyeceğiz */}
+        <Suspense fallback={<div>Yükleniyor...</div>}>
           <OtherCertificates firmaId={item.FirmaId} sertifikaId={item.id} />
         </Suspense>
         <div className="flex flex-col gap-4">
@@ -139,6 +140,8 @@ export default async function Page({
                   height={120}
                   priority={false}
                   className="h-auto w-auto object-contain"
+                  blurDataURL="/blur/sertifika.webp"
+                  placeholder="blur"
                 />
               </a>
             ))}

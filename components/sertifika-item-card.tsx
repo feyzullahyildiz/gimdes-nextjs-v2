@@ -28,13 +28,21 @@ export const SertifikaItemCard = ({
         "min-h-auto min-w-56 md:min-h-72",
         "group overflow-hidden rounded-md transition-all duration-300",
         "flex flex-row md:flex-col",
-        "outline-2 outline-gray-100 hover:outline-sky-300",
+        // "outline-2 outline-gray-100 hover:outline-sky-300",
+        "outline-secondary outline-2 hover:outline-sky-300 active:outline-sky-300",
+
         "shadow-md hover:shadow-xl",
         "cursor-pointer",
         className,
       )}
     >
-      <div className="relative">
+      <div
+        className={cn(
+          "relative flex bg-white",
+          "items-center md:items-start",
+          "justify-start md:justify-center",
+        )}
+      >
         <MainLogo
           className={cn(
             "flex items-center justify-center object-contain px-2 py-4",
@@ -47,8 +55,7 @@ export const SertifikaItemCard = ({
       <div
         className={cn(
           "flex flex-1 flex-col p-4",
-          "bg-gray-50/80",
-          "group-hover:bg-blue-50",
+          "group-hover:bg-accent",
           "transition-all duration-300",
         )}
       >
@@ -77,25 +84,22 @@ export const SertifikaItemCard = ({
             <br />
           </>
         )}
-        <div className={cn("flex justify-between text-sm", "text-gray-500")}>
-          <span>Sertifika Bitiş :</span>
-          <span>{getDate(item.SertifikaBitisTarihi)}</span>
-        </div>
+        {/* <div classt */}
       </div>
     </Link>
   );
 };
 
-function getDate(str: string) {
-  const date = new Date(str);
-  if (date.getFullYear() < 40) {
-    return "?";
-  }
-  const day = date.getDate().toString().padStart(2, "0");
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const year = date.getFullYear().toString().padStart(4, "0");
-  return `${day}/${month}/${year}`;
-}
+// function getDate(str: string) {
+//   const date = new Date(str);
+//   if (date.getFullYear() < 40) {
+//     return "?";
+//   }
+//   const day = date.getDate().toString().padStart(2, "0");
+//   const month = (date.getMonth() + 1).toString().padStart(2, "0");
+//   const year = date.getFullYear().toString().padStart(4, "0");
+//   return `${day}/${month}/${year}`;
+// }
 
 function MainLogo({
   src,

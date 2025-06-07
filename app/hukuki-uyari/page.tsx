@@ -37,7 +37,9 @@ export default function Page() {
         Bu site, orijinal kurum ya da kuruluş ile{" "}
         <strong>herhangi bir resmî bağlantıya sahip değildir</strong>. İçerikler
         birebir alınmış olmakla birlikte, sadece yazılım geliştirme, kullanıcı
-        deneyimi tasarımı ve teknik dönüşüm amacıyla kullanılmaktadır.
+        deneyimi tasarımı ve teknik dönüşüm amacıyla kullanılmaktadır. Sitede
+        yer alan bilgilerin doğruluğu, güncelliği ve yazılımsal hatalardan
+        kaynaklanan sorunlar için herhangi bir sorumluluk üstlenilmemektedir.
       </p>
 
       <p>

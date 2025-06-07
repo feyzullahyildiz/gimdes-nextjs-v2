@@ -25,7 +25,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
+    // suppressHydrationWarning
+    // https://ui.shadcn.com/docs/dark-mode/next
+    <html lang="tr" suppressHydrationWarning>
       <body
         className={cn("flex min-h-screen min-w-96 flex-col", roboto.className)}
       >

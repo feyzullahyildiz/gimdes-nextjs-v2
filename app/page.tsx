@@ -24,7 +24,7 @@ export default function Home() {
         const data = await response.json();
         setData(data.hits);
       } catch (error) {
-        console.error("Arama hatası:", error);
+        console.log("Arama hatası:", error);
       }
     };
     fetchData();
@@ -33,25 +33,36 @@ export default function Home() {
     };
   }, [debouncedSearch]);
   return (
-    <div className={cn("container mx-auto", "flex flex-col gap-4 pt-4")}>
+    <div className={cn("container mx-auto flex flex-1 flex-col gap-4 pt-4")}>
       <Input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Arama yapınız..."
         autoFocus
-        className="bg-secondary text-primary sticky top-18 z-10 w-full px-4 py-6"
+        className="text-primary !bg-background sticky top-22 z-10 w-full border-2 border-sky-50 px-4 py-6"
       />
-      <div className="grid flex-wrap gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
+      <div className="grid flex-wrap gap-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 2xl:grid-cols-6">
         {data.map((item, index) => (
           <SertifikaItemCard
             key={index + item.document.id}
             item={item.document}
             highlight={item.highlight}
-            showCategory
+            // showCategory
           />
         ))}
       </div>
+      {data.length === 0 && (
+        <div className="flex flex-1 flex-col items-center justify-center opacity-50 select-none">
+          <h1 className="text-muted-foreground text-8xl">GİMDES</h1>
+          <p className="text-muted-foreground text-3xl">
+            Sertifika arama motoru.
+          </p>
+          <p className="text-muted-foreground text-lg">
+            Üçüncü parti uygulama.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

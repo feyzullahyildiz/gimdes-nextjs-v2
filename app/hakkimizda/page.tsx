@@ -41,7 +41,7 @@ export default function Page() {
       <h2 className="mb-1 text-lg font-bold">Uygulama Yol Haritası</h2>
       <Item done>Kategorilere UTF-8 emoji desteği eklenmesi</Item>
       <Item done>Arama sonuçlarında vurgulama (highlight) desteği</Item>
-      <Item>Koyu tema desteği</Item>
+      <Item done>Koyu tema desteği</Item>
       <Item>Ana sayfa düzenlemesi</Item>
       <Item>Mobil uyumluluk optimizasyonu</Item>
       <Item>Progressive Web App (PWA) desteği</Item>

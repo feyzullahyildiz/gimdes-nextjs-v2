@@ -6,6 +6,11 @@ export default function Page() {
     <div className="container mx-auto flex flex-col gap-4 px-4 py-8">
       <h1 className="text-2xl font-bold">Sürüm Notları</h1>
       <Version
+        version="1.0.3"
+        date="2025-06-07"
+        changes={["Koyu tema desteği eklendi."]}
+      />
+      <Version
         version="1.0.2"
         date="2025-06-07"
         changes={[

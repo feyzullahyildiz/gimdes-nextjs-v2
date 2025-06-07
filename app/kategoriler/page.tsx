@@ -18,7 +18,7 @@ export default async function Page() {
               "min-h-auto min-w-56 md:min-h-60",
               "flex-row md:flex-col",
               "group flex overflow-hidden rounded-md transition-all duration-300",
-              "outline-2 outline-gray-100 hover:outline-sky-300",
+              "outline-primary-foreground outline-2 hover:outline-sky-300 active:outline-sky-300",
               "shadow-md hover:shadow-xl",
               "cursor-pointer",
             )}
@@ -32,8 +32,6 @@ export default async function Page() {
             <span
               className={cn(
                 "flex flex-1 flex-col p-4",
-                "bg-gray-50/80",
-                "group-hover:bg-blue-50",
                 "transition-all duration-300",
                 "text-lg font-semibold wrap-break-word",
               )}
