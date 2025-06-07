@@ -10,7 +10,8 @@ import { roboto } from "@/util/font";
 import { CookieConsent } from "@/components/cookie-consent";
 
 export const metadata: Metadata = {
-  title: "Helal Sertifika Firmaları - Modern ve Kullanıcı Dostu Liste | gimdes.site",
+  title:
+    "Helal Sertifika Firmaları - Modern ve Kullanıcı Dostu Liste | gimdes.site",
   description:
     "Bu site, GİMDES'in resmi helal sertifikalı firmalarını güncel teknolojilerle kullanıcı dostu bir arayüzde sunar. Firma isimleri, logoları ve sertifika bilgileri orijinal kaynaktan alınmıştır. Eğitim ve toplumsal fayda amacıyla geliştirilmiştir.",
 };

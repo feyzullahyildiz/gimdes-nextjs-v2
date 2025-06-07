@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "kc3fwedf6dvzii2ff4ga37mrqq0rrtae.lambda-url.eu-central-1.on.aws",
+        hostname:
+          "kc3fwedf6dvzii2ff4ga37mrqq0rrtae.lambda-url.eu-central-1.on.aws",
       },
     ],
   },

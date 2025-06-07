@@ -1,4 +1,7 @@
-export function formatDate(d: string, { hideHour = false }: { hideHour?: boolean } = {}) {
+export function formatDate(
+  d: string,
+  { hideHour = false }: { hideHour?: boolean } = {},
+) {
   const date = new Date(d);
   if (hideHour) {
     return date.toLocaleDateString("tr-TR", {

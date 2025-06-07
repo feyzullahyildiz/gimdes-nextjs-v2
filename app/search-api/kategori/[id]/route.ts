@@ -4,12 +4,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
   const searchParams = request.nextUrl.searchParams;
   const query = searchParams.get("q") || "";
-
 
   const result = await getTypeSenseClient()
     // .collections("items")

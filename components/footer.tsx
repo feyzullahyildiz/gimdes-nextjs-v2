@@ -23,8 +23,8 @@ export const Footer = async () => {
           >
             gimdes.com
           </a>{" "}
-          ’un modernleştirilmiş, eğitimsel bir klonudur. Hiçbir
-          ticari faaliyet içermez.
+          ’un modernleştirilmiş, eğitimsel bir klonudur. Hiçbir ticari faaliyet
+          içermez.
         </div>
         <div>
           <div>Son Güncelleme tarihi: {formatDate(latest)}</div>

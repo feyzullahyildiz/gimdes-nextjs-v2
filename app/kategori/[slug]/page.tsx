@@ -19,7 +19,7 @@ export default async function Page({
     document: product,
   }));
   return (
-    <CategoryPageContent 
+    <CategoryPageContent
       initialProducts={partialProducts}
       category={category}
       categorySlug={slug}

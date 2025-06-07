@@ -4,4 +4,3 @@ export type ICategory = {
   KategoriAdi: string;
   SertifikaSayisi: number;
 };
-  

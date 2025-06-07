@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   gimdes-v2:
@@ -22,4 +22,4 @@ services:
 
 networks:
   gimdes-network:
-    driver: bridge 
+    driver: bridge

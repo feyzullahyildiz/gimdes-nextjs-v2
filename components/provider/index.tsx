@@ -6,6 +6,6 @@ interface ProvidersProps {
 
 export const Providers = ({ children }: ProvidersProps) => {
   return (
-      <NavigationProgressBarProvider>{children}</NavigationProgressBarProvider>
+    <NavigationProgressBarProvider>{children}</NavigationProgressBarProvider>
   );
 };

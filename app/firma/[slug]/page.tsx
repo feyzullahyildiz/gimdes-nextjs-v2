@@ -14,7 +14,7 @@ export default async function Page({
   const firma = await getFirmaById(slug);
   const sertifikalar = await getSertifikasByIdArray(firma.sertifikaIds);
   return (
-    <div className="container mx-auto py-8 flex flex-col gap-8">
+    <div className="container mx-auto flex flex-col gap-8 py-8">
       <div>
         <h1 className="text-2xl font-bold">{firma.FirmaAdi}</h1>
         <p className="text-gray-500">{firma.FirmaAdresi}</p>

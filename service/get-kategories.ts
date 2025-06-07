@@ -26,10 +26,9 @@ export async function getCategories() {
   return data as CategoryItem[];
 }
 
-export async function getCategoriesWithEmoji(
-): Promise<CategoryWithEmoji[]> {
+export async function getCategoriesWithEmoji(): Promise<CategoryWithEmoji[]> {
   const categories = await getCategories();
-  const res = categories.map(c => withEmoji(c));
+  const res = categories.map((c) => withEmoji(c));
   return res;
 }
 
