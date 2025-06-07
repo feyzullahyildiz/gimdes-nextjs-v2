@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
           "kc3fwedf6dvzii2ff4ga37mrqq0rrtae.lambda-url.eu-central-1.on.aws",
       },
     ],
+    // 
+    minimumCacheTTL: 60 * 60 * 24, // 1 gün minimum cache
   },
   experimental: {
     viewTransition: true,

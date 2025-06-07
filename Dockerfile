@@ -12,7 +12,7 @@ COPY package-lock.json package-lock.json
 # Nextjs'i canary versiyonu ile kullanıyoruz.
 # bazı kütüphaneler (@bprogress/next) Nextjs'in canary versiyonu ile uyumlu değil.
 # force kullanarak yükledik, bir sorun çıkmadı şuana kadar
-# o sebebpten dolayı --force ile yüküyoruz
+# o sebebten dolayı --force ile yüküyoruz
 RUN npm ci --force
 
 # Uygulama kaynak kodunu kopyala
@@ -24,6 +24,9 @@ COPY . .
 # NextJS build esnasında çok fazla istek yapıyor. client side request yapıtğın api'ini bile çağırıyor.
 # O yüzden image'da build etmekten vaz geçtim. Container run edilirken build edilecek.
 RUN npm run build
+
+# Next.js cache klasörü için volume
+VOLUME ["/app/.next/cache"]
 
 # Port 3000'i aç
 EXPOSE 3000

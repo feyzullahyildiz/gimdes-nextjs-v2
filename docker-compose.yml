@@ -16,10 +16,18 @@ services:
       - TYPESENSE_API_KEY=${TYPESENSE_API_KEY}
       - TYPESENSE_PROTOCOL=${TYPESENSE_PROTOCOL}
       - TYPESENSE_PATH=${TYPESENSE_PATH}
+    volumes:
+      # Next.js Image cache optimization
+      - nextjs_cache:/app/.next/cache
     restart: unless-stopped
     networks:
       - gimdes-network
       - gimdes-data-provider_default
+
+# Volume tanımları
+volumes:
+  nextjs_cache:
+    driver: local
 
 networks:
   gimdes-network:
