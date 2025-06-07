@@ -19,7 +19,10 @@ services:
     restart: unless-stopped
     networks:
       - gimdes-network
+      - gimdes-data-provider_default
 
 networks:
   gimdes-network:
     driver: bridge
+  gimdes-data-provider_default:
+    external: true
