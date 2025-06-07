@@ -1,7 +1,7 @@
 import React from "react";
 import { getProductsByCategory } from "@/service/get-products";
 import { getCategoryById } from "@/service/get-category-by-id";
-import { CategoryPageContent } from "./category-page-content";
+import { CategoryPageContent } from "./_components_/category-page-content";
 
 export const dynamic = "force-dynamic";
 

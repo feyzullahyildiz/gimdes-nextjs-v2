@@ -1,6 +1,5 @@
 "use client";
 
-// TODO bu componeti bu path'den çıkart
 import React, { useState, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { SertifikaItemCard } from "@/components/sertifika-item-card";
@@ -9,6 +8,7 @@ import type {
   TypesenseApiResponseItem,
 } from "@/types/typesense/ApiRes";
 import { ICategory } from "@/types/api/category";
+import { useDebounce } from "@/util/use-debounce";
 
 interface CategoryPageContentProps {
   initialProducts: Partial<
@@ -19,23 +19,6 @@ interface CategoryPageContentProps {
   >[];
   category: ICategory;
   categorySlug: string;
-}
-
-// Custom debounce hook
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
 }
 
 export function CategoryPageContent({
@@ -50,7 +33,7 @@ export function CategoryPageContent({
   const [isLoading, setIsLoading] = useState(false);
 
   // Debounced search term
-  const debouncedSearchTerm = useDebounce(searchTerm, 80);
+  const debouncedSearchTerm = useDebounce(searchTerm, 100);
 
   // Search function
   const searchProducts = useCallback(
@@ -89,7 +72,7 @@ export function CategoryPageContent({
     const abortController = new AbortController();
     searchProducts(debouncedSearchTerm, abortController);
     return () => {
-      abortController.abort();
+      abortController.abort("hızlı arama");
     };
   }, [debouncedSearchTerm, searchProducts]);
 
@@ -138,9 +121,9 @@ export function CategoryPageContent({
         </div>
       </div>
       <div className="grid gap-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 2xl:grid-cols-6">
-        {products.map((item) => (
+        {products.map((item, index) => (
           <SertifikaItemCard
-            key={item.document!.id}
+            key={index + item.document!.id}
             item={item.document!}
             highlight={item.highlight}
           />

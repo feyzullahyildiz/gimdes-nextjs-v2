@@ -6,6 +6,13 @@ export default function Page() {
     <div className="container mx-auto flex flex-col gap-4 px-4 py-8">
       <h1 className="text-2xl font-bold">Sürüm Notları</h1>
       <Version
+        version="1.0.2"
+        date="2025-06-07"
+        changes={[
+          "Arama sonuçlarında highlight sorunu %99 düzeltildi. Teknik açıklama: Reactta array render ederken kullanmamız gereken key değerine document'in idsini veriyorduk. Ama döküman içeriği değişiyordu. Bazı senaryolarda tekrardan render edilmiyordu. Artık index değeri ile beraber veriyoruz. Sonuç: index ile beraber verilmesi ciddi ölçüde düzeltecektir.",
+        ]}
+      />
+      <Version
         version="1.0.1"
         date="2025-06-07"
         changes={[

@@ -43,17 +43,6 @@ export const SertifikaItemCard = ({
           src={item.MarkaLogosu}
           alt={item.MarkaAdi}
         />
-        {/* <div
-          className={cn(
-            "absolute top-0 right-0",
-            "flex items-center justify-center",
-            "size-8 rounded-bl-full bg-amber-300/30 pb-2 pl-2 text-xs font-bold",
-            "transition-all duration-300",
-            "group-hover:size-12 group-hover:bg-amber-300/100 group-hover:pb-4 group-hover:pl-4",
-          )}
-        >
-          {item.YildizSayisi}
-        </div> */}
       </div>
       <div
         className={cn(
@@ -152,7 +141,7 @@ function RenderField({
 
   return (
     <div
-      className={className}
+      className={cn(className)}
       dangerouslySetInnerHTML={{ __html: highlight[field].snippet }}
     ></div>
   );

@@ -33,9 +33,9 @@ export default function Page() {
       <p>
         Bu proje, eğitimsel ve toplumsal fayda amacı güder. Telif hakları ve
         yasal sorumluluklar konusundaki hassasiyetimiz nedeniyle, projenin açık
-        kaynak kodlu hale getirilmesi ve daha geniş bir geliştirici
-        topluluğunun katkısına açılması ancak uygun koşulların oluşması
-        durumunda mümkün olacaktır.
+        kaynak kodlu hale getirilmesi ve daha geniş bir geliştirici topluluğunun
+        katkısına açılması ancak uygun koşulların oluşması durumunda mümkün
+        olacaktır.
       </p>
       <br />
       <h2 className="mb-1 text-lg font-bold">Uygulama Yol Haritası</h2>
@@ -59,6 +59,7 @@ export default function Page() {
       <Item>
         SEO için meta veriler (başlık, açıklama, anahtar kelimeler) desteği
       </Item>
+      <Item>404 sayfası</Item>
       <Item>
         <i>Peynir</i> diye arama yapıldığında peynir üretimi yapan firmaların
         listelenmesi
