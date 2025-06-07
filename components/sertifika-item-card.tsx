@@ -25,10 +25,9 @@ export const SertifikaItemCard = ({
     <Link
       href={`/sertifika/${item.id}`}
       className={cn(
-        "min-h-auto min-w-56 md:min-h-72",
+        "min-h-auto min-w-56 md:min-h-60",
         "group overflow-hidden rounded-md transition-all duration-300",
         "flex flex-row md:flex-col",
-        // "outline-2 outline-gray-100 hover:outline-sky-300",
         "outline-secondary outline-2 hover:outline-sky-300 active:outline-sky-300",
 
         "shadow-md hover:shadow-xl",
@@ -46,7 +45,7 @@ export const SertifikaItemCard = ({
         <MainLogo
           className={cn(
             "flex items-center justify-center object-contain px-2 py-4",
-            "size-20 md:size-auto md:h-32",
+            "size-20 md:size-auto md:h-32 md:w-full",
           )}
           src={item.MarkaLogosu}
           alt={item.MarkaAdi}
@@ -69,37 +68,26 @@ export const SertifikaItemCard = ({
         <RenderField
           item={item}
           field="FirmaAdi"
-          className={cn("text-xs", "text-gray-500")}
+          className={cn("text-xs", "text-muted-foreground")}
           highlight={highlight}
         />
-        <div className="hidden min-h-8 flex-1 md:block"></div>
 
         {showCategory && (
           <>
             <div
-              className={cn("flex justify-between text-sm", "text-gray-500")}
+              className={cn(
+                "text-muted-foreground flex justify-between text-sm",
+              )}
             >
               <span>{item.KategoriAdi}</span>
             </div>
             <br />
           </>
         )}
-        {/* <div classt */}
       </div>
     </Link>
   );
 };
-
-// function getDate(str: string) {
-//   const date = new Date(str);
-//   if (date.getFullYear() < 40) {
-//     return "?";
-//   }
-//   const day = date.getDate().toString().padStart(2, "0");
-//   const month = (date.getMonth() + 1).toString().padStart(2, "0");
-//   const year = date.getFullYear().toString().padStart(4, "0");
-//   return `${day}/${month}/${year}`;
-// }
 
 function MainLogo({
   src,

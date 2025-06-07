@@ -19,7 +19,7 @@ export default async function Page() {
               "flex-row md:flex-col",
               "group flex overflow-hidden rounded-md transition-all duration-300",
               "outline-primary-foreground outline-2 hover:outline-sky-300 active:outline-sky-300",
-              "shadow-md hover:shadow-xl",
+              "border-sidebar-border border-2 shadow-md hover:shadow-xl",
               "cursor-pointer",
             )}
           >
@@ -34,12 +34,15 @@ export default async function Page() {
                 "flex flex-1 flex-col p-4",
                 "transition-all duration-300",
                 "text-lg font-semibold wrap-break-word",
+                "bg-secondary",
               )}
             >
               <div>{category.name}</div>
               <div className="min-h-4 flex-1"></div>
               <div
-                className={cn("flex justify-between text-sm", "text-gray-500")}
+                className={cn(
+                  "text-muted-foreground flex justify-between text-sm",
+                )}
               >
                 <span>Sertifika Sayısı :</span>
                 <span>{category.SertifikaSayisi}</span>
