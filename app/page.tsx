@@ -48,7 +48,7 @@ export default function Home() {
             key={index + item.document.id}
             item={item.document}
             highlight={item.highlight}
-            // showCategory
+            showCategory
           />
         ))}
       </div>

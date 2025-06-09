@@ -37,6 +37,8 @@ export type ISertifikaItem = {
   id: string;
   unstable_SertifikaKapsami: Array<string>;
   unstable_Tarihce: Array<string>;
+  kategori_name: string;
+  kategori_emoji: string;
 };
 export type TypesenseSertifikaItemHighlight = {
   [key in SertifikaItemFieldName]: {

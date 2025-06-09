@@ -74,14 +74,10 @@ export const SertifikaItemCard = ({
 
         {showCategory && (
           <>
-            <div
-              className={cn(
-                "text-muted-foreground flex justify-between text-sm",
-              )}
-            >
-              <span>{item.KategoriAdi}</span>
+            <div className="min-h-4 flex-1"></div>
+            <div className={cn("text-muted-foreground flex text-sm")}>
+              <div>{item.kategori_name}</div>
             </div>
-            <br />
           </>
         )}
       </div>

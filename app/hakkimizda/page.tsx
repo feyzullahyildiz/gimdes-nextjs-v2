@@ -50,7 +50,7 @@ export default function Page() {
         (IndexedDB ile LocalForage kullanımı)
       </Item>
       <Item>URL yapısında SEO optimizasyonu</Item>
-      <Item>
+      <Item done>
         Kategori isimlendirinde düzenleme. İngilizce yazıların kaldırılması.
       </Item>
       <Item>Helal Dünya Marketleri harita entegrasyonu</Item>

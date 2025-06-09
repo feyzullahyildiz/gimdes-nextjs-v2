@@ -36,10 +36,10 @@ export default async function Page({
           </h1>
           <Link
             href={`/kategori/${item.KategoriId}`}
-            className="underline underline-offset-2"
+            className="underline underline-offset-4"
           >
             <strong>Kategori: </strong>
-            {item.KategoriAdi}
+            {item.kategori_name} {item.kategori_emoji}
           </Link>
           <p>
             <strong>Son Güncelleme Tarihi: </strong>
@@ -117,36 +117,38 @@ export default async function Page({
           </div>
         </section>
 
-        <div className="flex-1"></div>
+        {/* <div className="flex-1"></div> */}
 
         {/* TODO buraya skeleton ekleyeceğiz */}
         <Suspense fallback={<div>Yükleniyor...</div>}>
           <OtherCertificates firmaId={item.FirmaId} sertifikaId={item.id} />
         </Suspense>
-        <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-bold">Sertifika Resimleri</h3>
-          <div className="flex flex-wrap gap-4">
-            {item.SertifikaResimleri.map((resim) => (
-              <a
-                key={resim.Filename}
-                href={getProxiedImageUrl(resim.Filename)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src={getImageUrl(resim.Filename)}
-                  alt={item.MarkaAdi}
-                  width={80}
-                  height={120}
-                  priority={false}
-                  className="h-auto w-auto object-contain"
-                  blurDataURL="/blur/sertifika.webp"
-                  placeholder="blur"
-                />
-              </a>
-            ))}
+        {item.SertifikaResimleri.length > 0 && (
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xl font-bold">Sertifika Resimleri</h3>
+            <div className="flex flex-wrap gap-4">
+              {item.SertifikaResimleri.map((resim) => (
+                <a
+                  key={resim.Filename}
+                  href={getProxiedImageUrl(resim.Filename)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={getImageUrl(resim.Filename)}
+                    alt={item.MarkaAdi}
+                    width={80}
+                    height={120}
+                    priority={false}
+                    className="h-auto w-auto object-contain"
+                    blurDataURL="/blur/sertifika.webp"
+                    placeholder="blur"
+                  />
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -90,7 +90,14 @@ export function CategoryPageContent({
   return (
     <div className="container mx-auto flex flex-col gap-8 py-8">
       <div className="flex flex-col justify-between gap-4 md:flex-row">
-        <h1 className="text-2xl font-semibold">{category.KategoriAdi}</h1>
+        <div>
+          <h1 className="text-2xl font-semibold">
+            {category.name} {category.emoji}
+          </h1>
+          <h4 className="text-muted-foreground text-sm">
+            {category.KategoriAdi}
+          </h4>
+        </div>
         <div className="relative max-w-96">
           <Input
             className="w-full"

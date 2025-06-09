@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       },
     ],
     //
-    minimumCacheTTL: 60 * 60 * 24, // 1 gün minimum cache
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 gün minimum cache
   },
   experimental: {
     viewTransition: true,

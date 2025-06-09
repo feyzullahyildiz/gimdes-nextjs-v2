@@ -3,4 +3,7 @@ export type ICategory = {
   Id: number;
   KategoriAdi: string;
   SertifikaSayisi: number;
+  name: string;
+  emoji: string;
+  kapsam: string[];
 };

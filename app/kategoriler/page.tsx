@@ -1,12 +1,12 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { getCategoriesWithEmoji } from "@/service/get-kategories";
+import { getCategories } from "@/service/get-kategories";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const categories = await getCategoriesWithEmoji();
+  const categories = await getCategories();
   return (
     <div className="container mx-auto py-4">
       <div className="grid gap-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 2xl:grid-cols-6">
@@ -24,7 +24,7 @@ export default async function Page() {
             )}
           >
             <div className="relative flex h-auto w-32 items-center justify-center md:h-32 md:w-auto">
-              <span className="p-4 text-center text-2xl md:text-6xl">
+              <span className="p-4 text-center text-2xl md:text-4xl">
                 {category.emoji}
               </span>
             </div>
