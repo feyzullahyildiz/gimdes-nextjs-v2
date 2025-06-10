@@ -6,6 +6,14 @@ export default function Page() {
     <div className="container mx-auto flex flex-col gap-4 px-4 py-8">
       <h1 className="text-2xl font-bold">Sürüm Notları</h1>
       <Version
+        version="1.0.5"
+        date="2025-06-10"
+        changes={[
+          "Ana sayfa aramalarında kategori isimleri de görünüyor.",
+          "Kategori'lere keywordler de eklendi. Aramalarda daha rahat bulunuyor.",
+        ]}
+      />
+      <Version
         version="1.0.4"
         date="2025-06-09"
         changes={[

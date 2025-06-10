@@ -45,7 +45,7 @@ export const SertifikaItemCard = ({
         <MainLogo
           className={cn(
             "flex items-center justify-center object-contain px-2 py-4",
-            "size-20 md:size-auto md:h-32 md:w-full",
+            "h-32 w-32 md:h-32 md:w-full",
           )}
           src={item.MarkaLogosu}
           alt={item.MarkaAdi}
@@ -75,9 +75,12 @@ export const SertifikaItemCard = ({
         {showCategory && (
           <>
             <div className="min-h-4 flex-1"></div>
-            <div className={cn("text-muted-foreground flex text-sm")}>
-              <div>{item.kategori_name}</div>
-            </div>
+            <RenderField
+              item={item}
+              field="kategori_name"
+              className={cn("text-xs", "text-muted-foreground")}
+              highlight={highlight}
+            />
           </>
         )}
       </div>

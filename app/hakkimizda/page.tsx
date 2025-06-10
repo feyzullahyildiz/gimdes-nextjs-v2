@@ -60,7 +60,7 @@ export default function Page() {
         SEO için meta veriler (başlık, açıklama, anahtar kelimeler) desteği
       </Item>
       <Item>404 sayfası</Item>
-      <Item>
+      <Item done>
         <i>Peynir</i> diye arama yapıldığında peynir üretimi yapan firmaların
         listelenmesi
       </Item>

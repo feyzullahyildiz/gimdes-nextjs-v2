@@ -1,7 +1,6 @@
 import React from "react";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { getCategories } from "@/service/get-kategories";
+import { CategoryItemCard } from "@/components/category-item-card";
 
 export const dynamic = "force-dynamic";
 
@@ -11,44 +10,11 @@ export default async function Page() {
     <div className="container mx-auto py-4">
       <div className="grid gap-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 2xl:grid-cols-6">
         {categories.map((category) => (
-          <Link
-            href={`/kategori/${category.id}`}
+          <CategoryItemCard
             key={category.id}
-            className={cn(
-              "min-h-auto min-w-56 md:min-h-60",
-              "flex-row md:flex-col",
-              "group flex overflow-hidden rounded-md transition-all duration-300",
-              "outline-primary-foreground outline-2 hover:outline-sky-300 active:outline-sky-300",
-              "border-sidebar-border border-2 shadow-md hover:shadow-xl",
-              "cursor-pointer",
-            )}
-          >
-            <div className="relative flex h-auto w-32 items-center justify-center md:h-32 md:w-auto">
-              <span className="p-4 text-center text-2xl md:text-4xl">
-                {category.emoji}
-              </span>
-            </div>
-
-            <span
-              className={cn(
-                "flex flex-1 flex-col p-4",
-                "transition-all duration-300",
-                "text-lg font-semibold wrap-break-word",
-                "bg-secondary",
-              )}
-            >
-              <div>{category.name}</div>
-              <div className="min-h-4 flex-1"></div>
-              <div
-                className={cn(
-                  "text-muted-foreground flex justify-between text-sm",
-                )}
-              >
-                <span>Sertifika Sayısı :</span>
-                <span>{category.SertifikaSayisi}</span>
-              </div>
-            </span>
-          </Link>
+            category={category}
+            showSertifikaSayisi
+          />
         ))}
       </div>
     </div>

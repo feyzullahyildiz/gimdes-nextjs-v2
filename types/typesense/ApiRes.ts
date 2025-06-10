@@ -1,3 +1,6 @@
+// TODO Burası bir elden geçsin....
+import { ICategory, TypesenseCategoriItemHighlight } from "../api/category";
+
 export type TypesenseApiResponse = Array<TypesenseApiResponseItem>;
 
 export type ISertifikaItem = {
@@ -49,6 +52,25 @@ export type TypesenseSertifikaItemHighlight = {
 export type TypesenseApiResponseItem = {
   document: ISertifikaItem;
   highlight: TypesenseSertifikaItemHighlight;
+  highlights: Array<{
+    field: string;
+    matched_tokens: Array<string>;
+    snippet: string;
+  }>;
+  text_match: number;
+  text_match_info: {
+    best_field_score: string;
+    best_field_weight: number;
+    fields_matched: number;
+    num_tokens_dropped: number;
+    score: string;
+    tokens_matched: number;
+    typo_prefix_score: number;
+  };
+};
+export type TypesenseApiResponseCategoryItem = {
+  document: ICategory;
+  highlight: TypesenseCategoriItemHighlight;
   highlights: Array<{
     field: string;
     matched_tokens: Array<string>;
