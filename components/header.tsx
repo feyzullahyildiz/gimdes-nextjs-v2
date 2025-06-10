@@ -6,7 +6,7 @@ export const Header = ({}) => {
   return (
     <div className="shadow-accent bg-background sticky top-0 z-50 shadow-md">
       <div className="container mx-auto">
-        <div className="flex items-center gap-8 py-4">
+        <div className="flex items-center gap-4 py-4 md:gap-8">
           <Link href="/">Ana Sayfa</Link>
           <Link href="/kategoriler">Kategoriler</Link>
           <Link href="/hakkimizda">Hakkımızda</Link>

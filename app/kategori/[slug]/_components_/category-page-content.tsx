@@ -9,6 +9,7 @@ import type {
 } from "@/types/typesense/ApiRes";
 import { ICategory } from "@/types/api/category";
 import { useDebounce } from "@/util/use-debounce";
+import { fromSlug } from "@/util/slug";
 
 interface CategoryPageContentProps {
   initialProducts: Partial<
@@ -26,12 +27,13 @@ export function CategoryPageContent({
   category,
   categorySlug,
 }: CategoryPageContentProps) {
-  const [products, setProducts] = useState<Partial<TypesenseApiResponseItem>[]>(
-    [],
-  );
+  // Buraya default verileri veriyoruz. Dolayısıyla SSR'da da data gelmiş oluyor.
+  const [products, setProducts] =
+    useState<Partial<TypesenseApiResponseItem>[]>(initialProducts);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const categoryId = fromSlug(categorySlug);
   // Debounced search term
   const debouncedSearchTerm = useDebounce(searchTerm, 100);
 
@@ -47,7 +49,7 @@ export function CategoryPageContent({
       try {
         setIsLoading(true);
         const response = await fetch(
-          `/search-api/kategori/${categorySlug}?q=${encodeURIComponent(term)}`,
+          `/search-api/kategori/${categoryId}?q=${encodeURIComponent(term)}`,
           {
             signal: abortController.signal,
           },
@@ -58,13 +60,13 @@ export function CategoryPageContent({
 
         setProducts(hits);
       } catch (error) {
-        console.error("Arama hatası:", error);
+        console.log("Arama hatası:", error);
         setProducts(initialProducts);
       } finally {
         setIsLoading(false);
       }
     },
-    [categorySlug, initialProducts],
+    [categoryId, initialProducts],
   );
 
   // Effect for debounced search

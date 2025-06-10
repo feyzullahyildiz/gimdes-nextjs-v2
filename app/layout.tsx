@@ -29,7 +29,7 @@ export default async function RootLayout({
     // https://ui.shadcn.com/docs/dark-mode/next
     <html lang="tr" suppressHydrationWarning>
       <body
-        className={cn("flex min-h-screen min-w-96 flex-col", roboto.className)}
+        className={cn("flex min-h-screen min-w-92 flex-col", roboto.className)}
       >
         <Providers>
           <Header />

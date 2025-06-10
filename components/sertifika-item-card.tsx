@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getImageUrl } from "@/util/img-url";
 import { cn } from "@/lib/utils";
+import { toSlug } from "@/util/slug";
 
 interface Props {
   item: ISertifikaItem;
@@ -23,7 +24,7 @@ export const SertifikaItemCard = ({
 }: Props) => {
   return (
     <Link
-      href={`/sertifika/${item.id}`}
+      href={`/sertifika/${toSlug(item.MarkaAdi, item.id)}`}
       className={cn(
         "min-h-auto min-w-56 md:min-h-60",
         "group overflow-hidden rounded-md transition-all duration-300",
@@ -44,8 +45,8 @@ export const SertifikaItemCard = ({
       >
         <MainLogo
           className={cn(
-            "flex items-center justify-center object-contain px-2 py-4",
-            "h-32 w-32 md:h-32 md:w-full",
+            "flex items-center justify-center object-contain p-4 md:p-4",
+            "h-24 w-24 md:h-32 md:w-auto",
           )}
           src={item.MarkaLogosu}
           alt={item.MarkaAdi}
@@ -53,7 +54,7 @@ export const SertifikaItemCard = ({
       </div>
       <div
         className={cn(
-          "flex flex-1 flex-col p-4",
+          "flex flex-1 flex-col p-2 px-4 md:p-4",
           "group-hover:bg-accent",
           "transition-all duration-300",
         )}
@@ -61,7 +62,7 @@ export const SertifikaItemCard = ({
         <RenderField
           item={item}
           field="MarkaAdi"
-          className={cn("text-2xl font-bold wrap-break-word")}
+          className={cn("text-lg font-bold wrap-break-word md:text-2xl")}
           highlight={highlight}
         />
 

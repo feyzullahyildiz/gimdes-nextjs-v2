@@ -48,6 +48,8 @@ export default function Page() {
         Talep doğrultusunda gerekli düzenlemeler yapılacaktır.
       </p>
 
+      <br />
+
       <p>
         <strong>İletişim maili:</strong>{" "}
         <span className="select-all">nar.tomarza@gmail.com</span>

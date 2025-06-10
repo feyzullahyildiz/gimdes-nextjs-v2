@@ -7,6 +7,7 @@ import {
   TypesenseCategoriItemHighlight,
   TypesenseCategoriItemHighlightArray,
 } from "@/types/api/category";
+import { toSlug } from "@/util/slug";
 
 interface Props {
   category: ICategory;
@@ -15,16 +16,18 @@ interface Props {
     | TypesenseCategoriItemHighlightArray;
   showKeywords?: boolean;
   showSertifikaSayisi?: boolean;
+  showHelperText?: boolean;
 }
 export const CategoryItemCard = ({
   category,
   highlight,
   showKeywords = false,
   showSertifikaSayisi = false,
+  showHelperText = false,
 }: Props) => {
   return (
     <Link
-      href={`/kategori/${category.id}`}
+      href={`/kategori/${toSlug(category.name, category.id)}`}
       key={category.id}
       className={cn(
         "min-h-auto min-w-56 md:min-h-60",
@@ -35,23 +38,48 @@ export const CategoryItemCard = ({
         "cursor-pointer",
       )}
     >
-      <div className="relative flex h-auto w-32 items-center justify-center bg-white md:h-32 md:w-auto">
-        <span className="p-4 text-center text-2xl md:text-4xl">
+      <div
+        className={cn(
+          "relative flex items-center justify-center bg-white",
+          "h-24 w-24 md:h-32 md:w-auto",
+          "flex flex-col items-stretch justify-evenly",
+        )}
+      >
+        <span className={cn("text-center text-2xl md:text-4xl", "p-2 md:p-4")}>
           {category.emoji}
         </span>
+        {showHelperText && (
+          <span
+            className={cn(
+              "bg-destructive text-accent-foreground py-0 text-center text-sm",
+            )}
+          >
+            Kategori
+          </span>
+        )}
       </div>
 
-      <span className={cn("flex flex-1 flex-col gap-1 p-4", "bg-secondary")}>
-        <RenderField
-          className="text-lg font-semibold wrap-break-word"
-          item={category}
-          field="name"
-          highlight={highlight as TypesenseCategoriItemHighlight}
-        />
+      <span
+        className={cn(
+          "flex flex-1 flex-col gap-1 px-4 py-2 md:p-4",
+          "bg-secondary",
+        )}
+      >
+        <div className="flex items-center justify-between">
+          <RenderField
+            className="text-lg font-semibold wrap-break-word"
+            item={category}
+            field="name"
+            highlight={highlight as TypesenseCategoriItemHighlight}
+          />
+        </div>
 
         {showKeywords && (
           <RenderArrayField
-            className="text-muted-foreground ml-4 list-inside list-disc text-xs"
+            className={cn(
+              "text-muted-foreground ml-4 list-inside list-disc text-xs",
+              "grid grid-cols-2 sm:grid-cols-3 md:block",
+            )}
             item={category}
             field="keywords"
             highlight={highlight as TypesenseCategoriItemHighlightArray}

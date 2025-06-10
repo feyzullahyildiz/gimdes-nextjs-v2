@@ -62,6 +62,7 @@ export default function Home() {
             category={item.document}
             highlight={item.highlight}
             showKeywords
+            showHelperText
           />
         ))}
         {sertifikaResults.map((item, index) => (

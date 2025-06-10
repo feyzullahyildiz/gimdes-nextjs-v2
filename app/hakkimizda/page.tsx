@@ -49,7 +49,7 @@ export default function Page() {
         İstemci tarafı önbellek için Tanstack React-Query entegrasyonu
         (IndexedDB ile LocalForage kullanımı)
       </Item>
-      <Item>URL yapısında SEO optimizasyonu</Item>
+      <Item done>URL yapısında SEO optimizasyonu</Item>
       <Item done>
         Kategori isimlendirinde düzenleme. İngilizce yazıların kaldırılması.
       </Item>

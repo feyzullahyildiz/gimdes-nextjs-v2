@@ -11,7 +11,9 @@ export async function getFirmaById(id: string) {
       },
     },
   );
-  // await new Promise((resolve) => setTimeout(resolve, 1000));
+  if (!response.ok) {
+    return null;
+  }
   const data = await response.json();
   return data as FirmaItem;
 }

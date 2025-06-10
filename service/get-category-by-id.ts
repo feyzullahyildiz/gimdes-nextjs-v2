@@ -11,6 +11,9 @@ export async function getCategoryById(categoryId: string) {
       },
     },
   );
+  if (!response.ok) {
+    return null;
+  }
   const data = await response.json();
   return data as ICategory;
 }

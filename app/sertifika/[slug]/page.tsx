@@ -5,6 +5,8 @@ import { getImageUrl, getProxiedImageUrl } from "@/util/img-url";
 import { formatDate } from "@/util/format-date";
 import { OtherCertificates } from "./_component_/OtherCertificates";
 import Link from "next/link";
+import { fromSlug } from "@/util/slug";
+import { notFound } from "next/navigation";
 
 export const experimental_ppr = true;
 
@@ -16,7 +18,14 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const item = await getSertifikaById(slug);
+  const id = fromSlug(slug);
+  if (!id) {
+    return notFound();
+  }
+  const item = await getSertifikaById(id);
+  if (!item) {
+    return notFound();
+  }
   return (
     <div className="container mx-auto flex flex-1 flex-col justify-between gap-8 py-8 lg:flex-row">
       <div className="flex flex-1 flex-col gap-4 rounded-md">

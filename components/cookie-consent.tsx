@@ -26,8 +26,8 @@ export const CookieConsent = () => {
   if (!mounted || closed) return null;
 
   return (
-    <div className={cn("sticky bottom-0 bg-amber-200")}>
-      <div className="container mx-auto flex items-center justify-between p-4">
+    <div className={cn("bg-background border-border sticky bottom-0 border-2")}>
+      <div className="container mx-auto flex items-center justify-between gap-2 p-4">
         <span>Bu uygulama hiçbir şekilde çerez (cookie) kullanmamaktadır</span>
         <Button variant="outline" onClick={onClick}>
           Uyarıyı Kapat
