@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Providers } from "@/components/provider";
 import { roboto } from "@/util/font";
 import { CookieConsent } from "@/components/cookie-consent";
+import { ServiceWorker } from "@/components/service-worker";
 
 export const metadata: Metadata = {
   title:
@@ -36,6 +37,7 @@ export default async function RootLayout({
           <div className="flex flex-1 flex-col pb-16">{children}</div>
           <CookieConsent />
           <Footer />
+          <ServiceWorker />
         </Providers>
       </body>
     </html>

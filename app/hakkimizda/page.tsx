@@ -44,7 +44,7 @@ export default function Page() {
       <Item done>Koyu tema desteği</Item>
       <Item>Ana sayfa düzenlemesi</Item>
       <Item>Mobil uyumluluk optimizasyonu</Item>
-      <Item>Progressive Web App (PWA) desteği</Item>
+      <Item done>Progressive Web App (PWA) desteği</Item>
       <Item>
         İstemci tarafı önbellek için Tanstack React-Query entegrasyonu
         (IndexedDB ile LocalForage kullanımı)

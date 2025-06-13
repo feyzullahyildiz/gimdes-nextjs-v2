@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
     viewTransition: true,
     ppr: "incremental",
   },
+  reactStrictMode: false,
 };
 
 export default nextConfig;

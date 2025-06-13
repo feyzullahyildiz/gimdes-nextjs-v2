@@ -6,6 +6,13 @@ export default function Page() {
     <div className="container mx-auto flex flex-col gap-4 px-4 py-8">
       <h1 className="text-2xl font-bold">Sürüm Notları</h1>
       <Version
+        version="1.0.7"
+        date="2025-06-13"
+        changes={[
+          "PWA denemesi yapıldı.",
+        ]}
+      />
+      <Version
         version="1.0.6"
         date="2025-06-10"
         changes={[
