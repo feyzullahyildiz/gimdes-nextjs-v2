@@ -3,7 +3,6 @@ import { useEffect } from "react";
 
 export const ServiceWorker = () => {
   useEffect(() => {
-
     if ("serviceWorker" in navigator) {
       // Register a service worker hosted at the root of the
       // site using the default scope.

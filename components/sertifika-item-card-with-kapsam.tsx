@@ -133,14 +133,16 @@ function RenderField({
     return <div className={className}>{item[field]}</div>;
   }
 
-  if(highlights) {
-
+  if (highlights) {
     const fieldHighlights = highlights?.find((h) => h.field === field);
-    if(fieldHighlights) {
+    if (fieldHighlights) {
       return (
         <ul className={cn(className, "list-disc pl-4")}>
           {fieldHighlights.snippets.map((h, index) => (
-            <li key={`${field}-${index}`} dangerouslySetInnerHTML={{ __html: h }} />
+            <li
+              key={`${field}-${index}`}
+              dangerouslySetInnerHTML={{ __html: h }}
+            />
           ))}
         </ul>
       );

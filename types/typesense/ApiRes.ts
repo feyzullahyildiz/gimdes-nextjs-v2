@@ -76,11 +76,11 @@ export type TypesenseSertifikaItemHighlightForKapsam = {
   }[];
 };
 export type TypesenseSertifikaItemHighlightsForKapsam = Array<{
-  field: string
-  indices: Array<number>
-  matched_tokens: Array<Array<string>>
-  snippets: Array<string>
-}>
+  field: string;
+  indices: Array<number>;
+  matched_tokens: Array<Array<string>>;
+  snippets: Array<string>;
+}>;
 export type TypesenseApiResponseItemForKapsam = {
   document: ISertifikaItem;
   highlight: TypesenseSertifikaItemHighlightForKapsam;

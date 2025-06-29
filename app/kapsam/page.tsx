@@ -8,8 +8,9 @@ import { SertifikaItemCardWithKapsam } from "@/components/sertifika-item-card-wi
 
 export default function Home() {
   const [search, setSearch] = useState("");
-  const [sertifikaResults, setSertifikaResults] =
-    useState<TypesenseApiResponseItemForKapsam[]>([]);
+  const [sertifikaResults, setSertifikaResults] = useState<
+    TypesenseApiResponseItemForKapsam[]
+  >([]);
   const debouncedSearch = useDebounce(search, 100);
   useEffect(() => {
     if (debouncedSearch.trim().length === 0) {

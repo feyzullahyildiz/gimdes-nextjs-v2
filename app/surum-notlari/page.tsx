@@ -16,9 +16,7 @@ export default function Page() {
       <Version
         version="1.0.7"
         date="2025-06-13"
-        changes={[
-          "PWA denemesi yapıldı.",
-        ]}
+        changes={["PWA denemesi yapıldı."]}
       />
       <Version
         version="1.0.6"
