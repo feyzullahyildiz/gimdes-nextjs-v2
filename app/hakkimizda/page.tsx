@@ -54,7 +54,7 @@ export default function Page() {
         Kategori isimlendirinde düzenleme. İngilizce yazıların kaldırılması.
       </Item>
       <Item>Helal Dünya Marketleri harita entegrasyonu</Item>
-      <Item>Site ikonu (favicon) eklenmesi</Item>
+      <Item done>Site ikonu (favicon) eklenmesi</Item>
       <Item>Sertifika kapsamına göre gelişmiş arama filtreleri</Item>
       <Item>
         SEO için meta veriler (başlık, açıklama, anahtar kelimeler) desteği
@@ -63,6 +63,10 @@ export default function Page() {
       <Item done>
         <i>Peynir</i> diye arama yapıldığında peynir üretimi yapan firmaların
         listelenmesi
+      </Item>
+      <Item done>Sertifika kapsamına göre arama.</Item>
+      <Item>
+        Arama sonuçlarında sayfalama desteği. Infinite scroll techimizdir.
       </Item>
       <br />
 

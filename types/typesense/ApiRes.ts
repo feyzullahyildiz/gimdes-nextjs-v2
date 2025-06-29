@@ -68,6 +68,34 @@ export type TypesenseApiResponseItem = {
     typo_prefix_score: number;
   };
 };
+
+export type TypesenseSertifikaItemHighlightForKapsam = {
+  [key in SertifikaItemFieldName]: {
+    matched_tokens: Array<string>;
+    snippet: string;
+  }[];
+};
+export type TypesenseSertifikaItemHighlightsForKapsam = Array<{
+  field: string
+  indices: Array<number>
+  matched_tokens: Array<Array<string>>
+  snippets: Array<string>
+}>
+export type TypesenseApiResponseItemForKapsam = {
+  document: ISertifikaItem;
+  highlight: TypesenseSertifikaItemHighlightForKapsam;
+  highlights: TypesenseSertifikaItemHighlightsForKapsam;
+  text_match: number;
+  text_match_info: {
+    best_field_score: string;
+    best_field_weight: number;
+    fields_matched: number;
+    num_tokens_dropped: number;
+    score: string;
+    tokens_matched: number;
+    typo_prefix_score: number;
+  };
+};
 export type TypesenseApiResponseCategoryItem = {
   document: ICategory;
   highlight: TypesenseCategoriItemHighlight;
@@ -92,6 +120,6 @@ export type SertifikaItemFieldName = keyof Omit<
   TypesenseApiResponseItem["document"],
   | "BarkodluUrunSayisi"
   | "SertifikaResimleri"
-  | "unstable_SertifikaKapsami"
+  // | "unstable_SertifikaKapsami"
   | "unstable_Tarihce"
 >;

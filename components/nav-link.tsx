@@ -38,7 +38,7 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
             ? [
                 "text-primary bg-accent/30 font-semibold",
                 "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2",
-                "after:bg-primary after:h-0.5 after:w-3/4 after:rounded-full",
+                "after:bg-primary after:h-0.5 after:w-full after:rounded-full",
                 "after:transition-all after:duration-300",
                 activeClassName,
               ]
@@ -46,7 +46,7 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
                 "text-muted-foreground hover:text-foreground",
                 "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2",
                 "after:bg-primary after:h-0.5 after:w-0 after:rounded-full",
-                "after:transition-all after:duration-300 hover:after:w-3/4",
+                "after:transition-all after:duration-300 hover:after:w-full",
               ],
 
           className,
